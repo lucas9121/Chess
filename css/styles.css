@@ -43,6 +43,7 @@ main{
     align-items: end;
     justify-content: center;
     background: #D2AB6F;
+    position: relative;
 }
 
 .square:nth-child(16n+2), .square:nth-child(16n+4),
@@ -55,4 +56,12 @@ main{
 .square > small {
     opacity: 55%;
     font-size: 11px;
+}
+
+.square > img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    cursor: pointer;
 }
