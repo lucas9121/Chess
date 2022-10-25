@@ -333,7 +333,7 @@ const kingMovement = (evt) => {
 /////////////////////////////////////////////////////////////////////////   QUEEN MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const queenMovementOptions = (idx) => {
-    let squares = []
+    const squares = []
     //boxes queen can move too if there are no pieces
     // for(let i = idx; i < allSquares.length; i += 8){
     //     console.log(i)
@@ -372,13 +372,16 @@ const queenMovementOptions = (idx) => {
     //////////////// DOWN ///////////////////////////
     for(let i = idx - 8; i > 0; i -= 8){
         if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
             //background color
             if(allSquares[i].classList.contains('enemy')){
                 allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+                break
+            } else if(allSquares[i].classList.contains('occupied')) {
+                break
             } else {
                 allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
             }
-            squares.push(allSquares[i])
 
         }
     }
@@ -417,16 +420,27 @@ const queenMovement = (evt) => {
     if(queenToggle){
         for(let square of squares){
             square.addEventListener('click', moveQueen)
+            console.log('added event listener')
         }
     } else {
-        for(let square of squares){
+        for(let square of allSquares){
             square.removeEventListener('click', moveQueen)
+            square.removeEventListener('click', moveQueen, true)
+            square.removeEventListener('click', moveQueen, false)
             console.log('removed event listener')
             square.style.background = ''
         }
     }
     console.log('Queen Toggle')
     console.log(queenToggle)
+    // for(let square of allSquares){
+    //     square.removeEventListener('click', moveQueen)
+    //     square.removeEventListener('click', moveQueen, true)
+    //     square.removeEventListener('click', moveQueen, false)
+    //     console.log('removed event listener')
+    //     square.style.background = ''
+    // }
+    return squaresArray = [...allSquares]
 }
 
 const p1Turn = () => {
