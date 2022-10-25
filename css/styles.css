@@ -40,10 +40,12 @@ main{
     height: 100px;
     width: 100px;
     display: flex;
+    flex-direction: column;
     align-items: end;
     justify-content: center;
+    align-items: center;
+    justify-content: end;
     background: #D2AB6F;
-    position: relative;
 }
 
 .square:nth-child(16n+2), .square:nth-child(16n+4),
@@ -60,8 +62,7 @@ main{
 
 .square > img {
     object-fit: contain;
-    height: 100%;
+    height: calc(100% - 11px);
     width: 100%;
-    position: absolute;
     cursor: pointer;
 }
