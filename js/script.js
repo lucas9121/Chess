@@ -10,6 +10,7 @@ let squaresArray = [...allSquares]
 //global variables
 let movingPiece 
 let oldSquare
+let squares = []
 
 
 //toggles
@@ -62,6 +63,7 @@ function movePiece(square){
     //erase global variables
     movingPiece = null
     oldSquare = null
+    squares = []
 
     // update array
     squaresArray = [...allSquares]
@@ -310,7 +312,6 @@ const kingMovement = (evt) => {
 /////////////////////////////////////////////////////////////////////////   QUEEN MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const queenMovementOptions = (idx) => {
-    const squares = []
     //boxes queen can move too if there are no pieces
     // for(let i = idx; i < allSquares.length; i += 8){
     //     console.log(i)
@@ -378,27 +379,6 @@ const queenMovement = (evt) => {
     oldSquare = queenSquare[0]
     let idx = squaresArray.indexOf(queenSquare[0])
     let squares = queenMovementOptions(idx)
-
-    // function moveQueen (evt){
-    //     let placement = evt.target
-    //     // return movePiece(queenPiece, idx, placement, moveQueen)
-    //     //removes piece from original square
-    //     allSquares[idx].removeChild(queenPiece)
-    //     allSquares[idx].classList.remove('occupied')
-        
-    //     //places it piece on clicked square
-    //     placement.prepend(queenPiece)
-    //     placement.classList.add('occupied')
-
-    //     // removes event listener and background
-    //     for(let square of allSquares){
-    //         square.style.background = ''
-    //         square.removeEventListener('click', moveQueen)
-    //     }
-    //     squaresArray = [...allSquares]
-    //     return p2Turn()
-    // }
-
     if(queenToggle){
         for(let square of squares){
             square.addEventListener('click', clicked)
