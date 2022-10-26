@@ -405,24 +405,24 @@ const queenMovement = (evt) => {
 
 const p1Turn = () => {
     console.log('Player 1 move')
-    playerOne.king.addEventListener('click', kingMovement)
+    //Add Event Listeners
+    p1King.addEventListener('click', kingMovement)
+    p1Queen.addEventListener('click', queenMovement)
 
-    //queen
-    playerOne.queen.addEventListener('click', queenMovement)
+    // Remove Event Listeners
+    p2King.removeEventListener('click', kingMovement)
+    p2Queen.removeEventListener('click', queenMovement)
 }
 
 const p2Turn = () => {
     console.log('Player 2 move')
-    playerOne.king.removeEventListener('click', kingMovement)
-    playerOne.queen.removeEventListener('click', queenMovement)
+    //Add Event Listeners
     p2King.addEventListener('click', kingMovement)
+    p2Queen.addEventListener('click', queenMovement)
+
+    // Remove Event Listeners
+    p1King.removeEventListener('click', kingMovement)
+    p1Queen.removeEventListener('click', queenMovement)
 }
 
-if(playerToggle){
-    console.log('p1 function')
-    p1Turn()
-} else {
-    console.log('p2 function')
-    p2Turn()
-}
-console.log(playerToggle)
+p1Turn()
