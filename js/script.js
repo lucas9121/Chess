@@ -65,6 +65,10 @@ function movePiece(square){
     oldSquare = null
     squares = []
 
+    //Reset toggles
+    kingToggle = false
+    queenToggle = false
+
     // update array
     squaresArray = [...allSquares]
 
@@ -92,218 +96,129 @@ const clicked = (evt) => {
 
 /////////////////////////////////////////////////////////////////////////   KING MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const kingMovementRules = (king, idx) => {
+const kingMovementRules = (idx) => {
+    console.log('King Movement Rules function')
+    squares = []
     //if there is a box to the right, left, above or below the piece, then chance bacground color
-    if(allSquares[idx + 1] && !allSquares[idx + 1].classList.contains('occupied')) {
-        // changes the background of the square king can move too 
-        // if there is an enemy piece, background is different than no pieces
-        allSquares[idx + 1].style.background = `radial-gradient(${window.getComputedStyle(allSquares[idx + 1], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[idx + 1], null).getPropertyValue('background-color')}, #0010ff99)`
-        // squares piece can move to
-        allSquares[idx + 1].addEventListener('click', (evt) => {
-            let square = evt.target
-            
-            //removes piece from original square
-            allSquares[idx].removeChild(king)
-            
-            //places it piece on clicked square
-            square.prepend(king)
-            
-            //removes background
-            for(let square of allSquares){
-                square.style.background = ''
+    if(allSquares[idx + 1]){
+        let i = idx + 1
+        if(!allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
             }
-            kingToggle = false
-            playerToggle = !playerToggle
-
-        })
-    } 
-    if(allSquares[idx - 1] && !allSquares[idx - 1].classList.contains('occupied')) {
-        // changes the background of the square king can move too 
-        // if there is an enemy piece, background is different than no pieces
-        allSquares[idx - 1].style.background = `radial-gradient(${window.getComputedStyle(allSquares[idx - 1], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[idx - 1], null).getPropertyValue('background-color')}, #0010ff99)`
-        // squares piece can move to
-        allSquares[idx - 1].addEventListener('click', (evt) => {
-            let square = evt.target
-            
-            //removes piece from original square
-            allSquares[idx].removeChild(king)
-            
-            //places it piece on clicked square
-            square.prepend(king)
-            
-            //removes background
-            for(let square of allSquares){
-                square.style.background = ''
-            }
-            kingToggle = false
-            playerToggle = !playerToggle
-        })
+        }
     }
-    if(allSquares[idx + 7] && !allSquares[idx + 7].classList.contains('occupied')) {
-        // changes the background of the square king can move too 
-        // if there is an enemy piece, background is different than no pieces
-        allSquares[idx + 7].style.background = `radial-gradient(${window.getComputedStyle(allSquares[idx + 7], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[idx + 7], null).getPropertyValue('background-color')}, #0010ff99)`
-        // squares piece can move to
-        allSquares[idx + 7].addEventListener('click', (evt) => {
-            let square = evt.target
-            
-            //removes piece from original square
-            allSquares[idx].removeChild(king)
-            
-            //places it piece on clicked square
-            square.prepend(king)
-            
-            //removes background
-            for(let square of allSquares){
-                square.style.background = ''
+    if(allSquares[idx - 1]){
+        let i = idx - 1
+        if(!allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
             }
-            kingToggle = false
-            playerToggle = !playerToggle
-        })
-    } 
-    if(allSquares[idx - 7] && !allSquares[idx - 7].classList.contains('occupied')) {
-        // changes the background of the square king can move too 
-        // if there is an enemy piece, background is different than no pieces
-        allSquares[idx - 7].style.background = `radial-gradient(${window.getComputedStyle(allSquares[idx - 7], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[idx - 7], null).getPropertyValue('background-color')}, #0010ff99)`
-        // squares piece can move to
-        allSquares[idx - 7].addEventListener('click', (evt) => {
-            let square = evt.target
-            
-            //removes piece from original square
-            allSquares[idx].removeChild(king)
-            
-            //places it piece on clicked square
-            square.prepend(king)
-            
-            //removes background
-            for(let square of allSquares){
-                square.style.background = ''
-            }
-            kingToggle = false
-            playerToggle = !playerToggle
-        })
-    }  
-    if(allSquares[idx + 8] && !allSquares[idx + 8].classList.contains('occupied')) {
-        // changes the background of the square king can move too 
-        // if there is an enemy piece, background is different than no pieces
-        if(allSquares[idx + 8].classList.contains('occupied')){
-
-        } else {
-            allSquares[idx + 8].style.background = `radial-gradient(${window.getComputedStyle(allSquares[idx + 8], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[idx + 8], null).getPropertyValue('background-color')}, #0010ff99)`
         }
-        // squares piece can move to
-        allSquares[idx + 8].addEventListener('click', (evt) => {
-            let square = evt.target
-            
-            //removes piece from original square
-            allSquares[idx].removeChild(king)
-            
-            //places it piece on clicked square
-            square.prepend(king)
-            
-            //removes background
-            for(let square of allSquares){
-                square.style.background = ''
-            }
-            kingToggle = false
-            playerToggle = !playerToggle
-        })
-    } 
-    if(allSquares[idx - 8] && !allSquares[idx - 8].classList.contains('occupied')) {
-        // changes the background of the square king can move too 
-        // if there is an enemy piece, background is different than no pieces
-        if(allSquares[idx - 8].classList.contains('occupied')){
-
-        } else {
-            allSquares[idx - 8].style.background = `radial-gradient(${window.getComputedStyle(allSquares[idx - 8], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[idx - 8], null).getPropertyValue('background-color')}, #0010ff99)`
-        }
-        // squares piece can move to
-        allSquares[idx - 8].addEventListener('click', (evt) => {
-            let square = evt.target
-            
-            //removes piece from original square
-            allSquares[idx].removeChild(king)
-            
-            //places it piece on clicked square
-            square.prepend(king)
-            
-            //removes background
-            for(let square of allSquares){
-                square.style.background = ''
-            }
-            kingToggle = false
-            playerToggle = !playerToggle
-        })
     }
-    if(allSquares[idx + 9] && !allSquares[idx + 9].classList.contains('occupied')) {
-        // changes the background of the square king can move too 
-        // if there is an enemy piece, background is different than no pieces
-        if(allSquares[idx + 9].classList.contains('occupied')){
-
-        } else {
-            allSquares[idx + 9].style.background = `radial-gradient(${window.getComputedStyle(allSquares[idx + 9], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[idx + 9], null).getPropertyValue('background-color')}, #0010ff99)`
-        }
-        // squares piece can move to
-        allSquares[idx + 9].addEventListener('click', (evt) => {
-            let square = evt.target
-            
-            //removes piece from original square
-            allSquares[idx].removeChild(king)
-            
-            //places it piece on clicked square
-            square.prepend(king)
-            
-            //removes background
-            for(let square of allSquares){
-                square.style.background = ''
+    if(allSquares[idx + 7]){
+        let i = idx + 7
+        if(!allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
             }
-            kingToggle = false
-            playerToggle = !playerToggle
-        })
+        }
+    }
+    if(allSquares[idx - 7]){
+        let i = idx - 7
+        if(!allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+            }
+        }
     } 
-    if(allSquares[idx - 9] && !allSquares[idx - 9].classList.contains('occupied')) {
-        // changes the background of the square king can move too 
-        // if there is an enemy piece, background is different than no pieces
-        if(allSquares[idx - 9].classList.contains('occupied')) {
-            allSquares[idx - 9].style.background = `radial-gradient(${window.getComputedStyle(allSquares[idx - 9], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[idx - 9], null).getPropertyValue('background-color')}, green)`
-        } else {
-            allSquares[idx - 9].style.background = `radial-gradient(${window.getComputedStyle(allSquares[idx - 9], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[idx - 9], null).getPropertyValue('background-color')}, #0010ff99)`
-        }
-        // squares piece can move to
-        allSquares[idx - 9].addEventListener('click', (evt) => {
-            let square = evt.target
-            
-            //removes piece from original square
-            allSquares[idx].removeChild(king)
-            
-            //places it piece on clicked square
-            square.prepend(king)
-            
-            //removes background
-            for(let square of allSquares){
-                square.style.background = ''
+    if(allSquares[idx + 8]){
+        let i = idx + 8
+        if(!allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
             }
-            kingToggle = false
-            playerToggle = !playerToggle
-        })
-    }  
-    return squaresArray = [...allSquares]
+        }
+    }
+    if(allSquares[idx - 8]){
+        let i = idx - 8
+        if(!allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+            }
+        }
+    }
+    if(allSquares[idx + 9]){
+        let i = idx + 9
+        if(!allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+            }
+        }
+    }
+    if(allSquares[idx - 9]){
+        let i = idx - 9
+        if(!allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+            }
+        }
+    } 
+    return squares
 }
 
 const kingMovement = (evt) => {
+    console.log('King Movement function')
     ///removes all other movement backgrounds
     for(let square of allSquares){
         square.style.background = ''
     }
     queenToggle = false
     kingToggle = !kingToggle
+    movingPiece = evt.target
+    let kingSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
+    oldSquare = kingSquare[0]
+    let idx = squaresArray.indexOf(kingSquare[0])
+    squares = kingMovementRules(idx)
     if(kingToggle){
-        let kingPiece = evt.target
-        let kingSquare = squaresArray.filter((square) => square.children[0] === kingPiece)
-        let idx = squaresArray.indexOf(kingSquare[0])
-        kingMovementRules(kingPiece, idx)
+        for(let square of squares){
+            square.addEventListener('click', clicked)
+        }
     } else{
-        for(let square of allSquares){
+        for(let square of squares){
+            square.removeEventListener('click', clicked)
             square.style.background = ''
         }
     }
@@ -490,16 +405,16 @@ const queenMovement = (evt) => {
 
 const p1Turn = () => {
     console.log('Player 1 move')
-    p1King.addEventListener('click', kingMovement)
+    playerOne.king.addEventListener('click', kingMovement)
 
     //queen
-    p1Queen.addEventListener('click', queenMovement)
+    playerOne.queen.addEventListener('click', queenMovement)
 }
 
 const p2Turn = () => {
     console.log('Player 2 move')
-    p1King.removeEventListener('click', kingMovement)
-    p1Queen.removeEventListener('click', queenMovement)
+    playerOne.king.removeEventListener('click', kingMovement)
+    playerOne.queen.removeEventListener('click', queenMovement)
     p2King.addEventListener('click', kingMovement)
 }
 
