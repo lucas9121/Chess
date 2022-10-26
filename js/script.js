@@ -3,7 +3,13 @@ const p1King = document.querySelector('#p1King')
 const p2King = document.querySelector('#p2King')
 const p1Queen = document.querySelector('#p1Queen')
 const p2Queen = document.querySelector('#p2Queen')
+
+// array funcitons availability
 let squaresArray = [...allSquares]
+
+//global variables
+let movingPiece 
+let oldSquare
 
 
 //toggles
@@ -11,8 +17,9 @@ let playerToggle = true
 let kingToggle = false
 let queenToggle = false
 
+/////////////////////////////////////// Players info ///////////////////////////////////////
 const playerOne = {
-    name: '',
+    name: 'Me',
     king: p1King,
     queen: p1Queen,
     knights: [],
@@ -23,7 +30,7 @@ const playerOne = {
 }
 
 const playerTwo = {
-    name: '',
+    name: 'Computer',
     king: p2King,
     queen: p2Queen,
     knights: [],
@@ -33,83 +40,45 @@ const playerTwo = {
     
 }
 
+// adds square name
 for(let square of allSquares){
     let small = document.createElement('small')
     small.innerHTML = `${square.id}`
     square.appendChild(small)
 }
 
-function oneTimeEventListener(ele, evt, listener, piece, idx, square){
-    ele.addEventListener(evt, () => {
-        ele.removeEventListener(evt, arguments.callee)
-        return listener(piece, idx, square)
-    })
-}
+/////////////////////////////// Reusable Functions //////////////////////////////////////
+function movePiece(square){
+    console.log('Move Piece function')
 
-function movePiece(piece, idx, square){
-    for(let square of allSquares){
-        square.style.background = ''
-    }
     //removes piece from original square
-    allSquares[idx].removeChild(piece)
-    allSquares[idx].classList.remove('occupied')
+    oldSquare.removeChild(movingPiece)
+    oldSquare.classList.remove('occupied')
     
     //places it piece on clicked square
-    square.prepend(piece)
+    square.prepend(movingPiece)
     square.classList.add('occupied')
+
+    //erase global variables
+    movingPiece = null
+    oldSquare = null
+
+    // update array
+    return squaresArray = [...allSquares]
 }
 
-function movePieceOptions(piece, idx){
-    let clicked = null
-    for(let square of allSquares){
-        if(square.style.background !== ''){
-            clicked = square.addEventListener('click', movableSquares)
-        }
+const clicked = (evt) => {
+    console.log('Clicked funciton')
+    let square = evt.target
+
+    // removes background and event listeners
+    for(let box of allSquares){
+        box.removeEventListener('click', clicked)
+        box.style.background = ''
     }
-    if(clicked) movePiece(piece, idx, clicked)
+    return movePiece(square)
 }
 
-// movable squares => evt, idx, piece, element
-const movableSquares = (evt) => {
-    console.log(evt.target)
-    for(let square of allSquares){
-        square.style.background = ''
-        square.removeEventListener('click', movableSquares)
-    }
-    return evt.target
-        let square = evt.target
-        console.log('Square for minus loop')
-        console.log(square)
-        
-        //removes piece from original square
-        allSquares[idx].removeChild(piece)
-        allSquares[idx].classList.remove('occupied')
-        
-        //places it piece on clicked square
-        square.prepend(piece)
-        square.classList.add('occupied')
-        
-        //removes background
-        for(let square of allSquares){
-            square.style.background = ''
-        }
-        kingToggle - false
-        queenToggle = false
-        for(let square of allSquares){
-            square.style.background = ''
-            square.removeEventListener('click', movableSquares)
-        }
-        return squaresArray = [...allSquares]
-}
-
-// const movableSquares = (evt) => {
-//     console.log(evt)
-//     console.log(evt.target)
-//     for(let square of allSquares){
-//         square.style.background = ''
-//         square.removeEventListener('click', movableSquares)
-//     }
-// }
 
 /////////////////////////////////////////////////////////////////////////   KING MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -389,57 +358,50 @@ const queenMovementOptions = (idx) => {
 }
 
 const queenMovement = (evt) => {
+    console.log('queen movement function')
     //removes all other movement backgrounds
     for(let square of allSquares){
         square.style.background = ''
     }
     kingToggle = false
     queenToggle = !queenToggle
-    let queenPiece = evt.target
-    let queenSquare = squaresArray.filter((square) => square.children[0] === queenPiece)
+    movingPiece = evt.target
+    let queenSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
+    oldSquare = queenSquare[0]
     let idx = squaresArray.indexOf(queenSquare[0])
     let squares = queenMovementOptions(idx)
-    function moveQueen (evt){
-        let placement = evt.target
-        //removes piece from original square
-        allSquares[idx].removeChild(queenPiece)
-        allSquares[idx].classList.remove('occupied')
-        
-        //places it piece on clicked square
-        placement.prepend(queenPiece)
-        placement.classList.add('occupied')
 
-        // removes event listener and background
-        for(let square of allSquares){
-            square.style.background = ''
-            square.removeEventListener('click', moveQueen)
-        }
-        squaresArray = [...allSquares]
-        return p2Turn()
-    }
+    // function moveQueen (evt){
+    //     let placement = evt.target
+    //     // return movePiece(queenPiece, idx, placement, moveQueen)
+    //     //removes piece from original square
+    //     allSquares[idx].removeChild(queenPiece)
+    //     allSquares[idx].classList.remove('occupied')
+        
+    //     //places it piece on clicked square
+    //     placement.prepend(queenPiece)
+    //     placement.classList.add('occupied')
+
+    //     // removes event listener and background
+    //     for(let square of allSquares){
+    //         square.style.background = ''
+    //         square.removeEventListener('click', moveQueen)
+    //     }
+    //     squaresArray = [...allSquares]
+    //     return p2Turn()
+    // }
+
     if(queenToggle){
         for(let square of squares){
-            square.addEventListener('click', moveQueen)
-            console.log('added event listener')
+            square.addEventListener('click', clicked)
         }
     } else {
-        for(let square of allSquares){
-            square.removeEventListener('click', moveQueen)
-            square.removeEventListener('click', moveQueen, true)
-            square.removeEventListener('click', moveQueen, false)
-            console.log('removed event listener')
+        for(let square of squares){
+            square.removeEventListener('click', clicked)
             square.style.background = ''
         }
     }
-    console.log('Queen Toggle')
-    console.log(queenToggle)
-    // for(let square of allSquares){
-    //     square.removeEventListener('click', moveQueen)
-    //     square.removeEventListener('click', moveQueen, true)
-    //     square.removeEventListener('click', moveQueen, false)
-    //     console.log('removed event listener')
-    //     square.style.background = ''
-    // }
+
     return squaresArray = [...allSquares]
 }
 
