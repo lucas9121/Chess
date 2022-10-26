@@ -312,42 +312,27 @@ const kingMovement = (evt) => {
 /////////////////////////////////////////////////////////////////////////   QUEEN MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const queenMovementOptions = (idx) => {
-    //boxes queen can move too if there are no pieces
-    // for(let i = idx; i < allSquares.length; i += 8){
-    //     console.log(i)
-    //     // console.log(allSquares[i])
-    //     // console.log(allSquares.length)
-    //     if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
-    //         //background color
-    //         if(allSquares[i].classList.contains('enemy')){
-    //             allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
-    //         } else {
-    //             allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-    //         }
-
-    //         // square queen can move to
-    //         allSquares[i].addEventListener('click', (evt) => {
-    //             let square = evt.target
-    //             console.log('Square for plus loop')
-    //             console.log(square)
-                
-    //             //removes piece from original square
-    //             allSquares[idx].removeChild(queen)
-                
-    //             //places it piece on clicked square
-    //             square.prepend(queen)
-                
-    //             //removes background
-    //             for(let square of allSquares){
-    //                 square.style.background = ''
-    //             }
-    //             queenToggle = false
-    //             return squaresArray = [...allSquares]
-    //         })
-    //     }
-    // }
-
-    //////////////// DOWN ///////////////////////////
+    console.log('Queen Movement Options function')
+    squares = []
+    /////////////////////////////// DOWN //////////////////////////////////////////
+    for(let i = idx + 8; i <= allSquares.length; i += 8){
+        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+                break
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+                break
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+            }
+        } else {
+            break
+        }
+    }
+    /////////////////////////////// UP //////////////////////////////////////////
     for(let i = idx - 8; i > 0; i -= 8){
         if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
             squares.push(allSquares[i])
@@ -355,12 +340,122 @@ const queenMovementOptions = (idx) => {
             if(allSquares[i].classList.contains('enemy')){
                 allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
                 break
-            } else if(allSquares[i].classList.contains('occupied')) {
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
                 break
             } else {
                 allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
             }
-
+        } else {
+            break
+        }
+    }
+    /////////////////////////////// Right //////////////////////////////////////////
+    for(let i = idx + 1; i <= allSquares.length; i++){
+        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+                break
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+                break
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+            }
+        } else {
+            break
+        }
+    }
+    /////////////////////////////// Left //////////////////////////////////////////
+    for(let i = idx - 1; i > 0; i--){
+        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+                break
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+                break
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+            }
+        } else {
+            break
+        }
+    }
+    /////////////////////////////// Right Diagonal Down //////////////////////////////////////////
+    for(let i = idx + 9; i <= allSquares.length; i += 9){
+        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+                break
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+                break
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+            }
+        } else {
+            break
+        }
+    }
+    /////////////////////////////// Left Diagonal Up //////////////////////////////////////////
+    for(let i = idx - 9; i > 0; i -= 9){
+        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+                break
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+                break
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+            }
+        } else {
+            break
+        }
+    }
+    /////////////////////////////// Right Diagonal Up //////////////////////////////////////////
+    for(let i = idx - 7; i > 0; i -= 7){
+        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+                break
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+                break
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+            }
+        } else {
+            break
+        }
+    }
+    /////////////////////////////// Left Diagonal Down //////////////////////////////////////////
+    for(let i = idx + 7; i <= allSquares.length; i += 7){
+        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
+            squares.push(allSquares[i])
+            //background color
+            if(allSquares[i].classList.contains('enemy')){
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+                break
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+                break
+            } else {
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+            }
+        } else {
+            break
         }
     }
     return squares
@@ -378,7 +473,7 @@ const queenMovement = (evt) => {
     let queenSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
     oldSquare = queenSquare[0]
     let idx = squaresArray.indexOf(queenSquare[0])
-    let squares = queenMovementOptions(idx)
+    squares = queenMovementOptions(idx)
     if(queenToggle){
         for(let square of squares){
             square.addEventListener('click', clicked)
