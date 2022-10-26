@@ -64,7 +64,15 @@ function movePiece(square){
     oldSquare = null
 
     // update array
-    return squaresArray = [...allSquares]
+    squaresArray = [...allSquares]
+
+    if(playerToggle){
+        playerToggle = !playerToggle
+        return p2Turn()
+    } else {
+        playerToggle = !playerToggle
+        return p1Turn()
+    }
 }
 
 const clicked = (evt) => {
