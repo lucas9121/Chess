@@ -359,6 +359,84 @@ const oneAllAround = (idx) => {
     return squares
 }
 
+const upOne = (idx, pawn) => {
+    let i = -1
+    //Player 1 turn
+    if(playerToggle){
+        // if pawn hasn't moved yet
+        if(playerOne.pawns[pawn].movement === 0) {
+        //if pawn has already moved
+        } else {
+            if(allSquares[idx - 8]){
+            i = idx - 8
+                // player 2 pieces
+                if(allSquares[i].children[0].classList.contains('player2')){
+                    squares.push(allSquares[i])
+                    changeBackground(allSquares[i], 'green')
+                // player 1 pieces
+                } else if(allSquares[i].children[0].classList.contains('player1')){
+                    changeBackground(allSquares[i], 'red')
+                // no pieces
+                } else {
+                    squares.push(allSquares[i])
+                    changeBackground(allSquares[i], '#0010ff99')
+                }
+            // Player 2 turn
+            } else {
+                // player 1 pieces
+                if(allSquares[i].children[0].classList.contains('player1')){
+                    squares.push(allSquares[i])
+                    changeBackground(allSquares[i], 'green')
+                // player 2 pieces
+                } else if(allSquares[i].children[0].classList.contains('player2')){
+                    changeBackground(allSquares[i], 'red')
+                // no pieces
+                } else {
+                    squares.push(allSquares[i])
+                    changeBackground(allSquares[i], '#0010ff99')
+                }
+            }
+        }
+    // Player 2
+    } else {
+        // if pawn hasn't moved yet
+        if(playerOne.pawns[pawn].movement === 0) {
+        //if pawn has already moved
+        } else {
+            if(allSquares[idx + 8]){
+            i = idx + 8
+                // player 2 pieces
+                if(allSquares[i].children[0].classList.contains('player2')){
+                    squares.push(allSquares[i])
+                    changeBackground(allSquares[i], 'green')
+                // player 1 pieces
+                } else if(allSquares[i].children[0].classList.contains('player1')){
+                    changeBackground(allSquares[i], 'red')
+                // no pieces
+                } else {
+                    squares.push(allSquares[i])
+                    changeBackground(allSquares[i], '#0010ff99')
+                }
+            // Player 2 turn
+            } else {
+                // player 1 pieces
+                if(allSquares[i].children[0].classList.contains('player1')){
+                    squares.push(allSquares[i])
+                    changeBackground(allSquares[i], 'green')
+                // player 2 pieces
+                } else if(allSquares[i].children[0].classList.contains('player2')){
+                    changeBackground(allSquares[i], 'red')
+                // no pieces
+                } else {
+                    squares.push(allSquares[i])
+                    changeBackground(allSquares[i], '#0010ff99')
+                }
+            }
+        }
+    }
+    return squares
+}
+
 
 /////////////////////////////////////////////////////////////////////////   KING MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
