@@ -49,16 +49,36 @@ for(let square of allSquares){
 }
 
 /////////////////////////////// Reusable Functions //////////////////////////////////////
-function movePiece(square){
+function movePiece(clickedEl){
     console.log('Move Piece function')
+    //if cliced on opponent piece instead of square
+    if(clickedEl.nodeName === 'IMG') clickedEl = clickedEl.parentElement
 
     //removes piece from original square
     oldSquare.removeChild(movingPiece)
     oldSquare.classList.remove('occupied')
     
+    //If there's an opponent's piece in the square
+    if(clickedEl.classList.contains('occupied')){
+        let removePiece = clickedEl.children[0]
+        removePiece.remove()
+        //Player 1 turn and piece is opponent's king
+        if(playerToggle && playerTwo.king === removePiece){
+            clickedEl.prepend(movingPiece)
+            console.log(`Game over! ${playerOne.name} won!`)
+            return
+        }
+        //Player 2 turn and piece is opponent's king
+        if(!playerToggle && playerOne.king === removePiece){
+            clickedEl.prepend(movingPiece)
+            console.log(`Game over! ${playerTwo.name} won!`)
+            return
+        }
+    }
+
     //places it piece on clicked square
-    square.prepend(movingPiece)
-    square.classList.add('occupied')
+    clickedEl.prepend(movingPiece)
+    clickedEl.classList.add('occupied')
 
     //erase global variables
     movingPiece = null
