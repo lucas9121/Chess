@@ -611,6 +611,10 @@ const rightDiagonal = (idx) => {
             } else if(allSquares[i].children[0].classList.contains('player1')){
                 changeBackground(allSquares[i], 'red')
                 break
+            // end of board
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                changeBackground(allSquares[i], '#0010ff99')
+                break
             // no pieces
             } else {
                 squares.push(allSquares[i])
@@ -626,6 +630,10 @@ const rightDiagonal = (idx) => {
             // player 2 pieces
             } else if(allSquares[i].children[0].classList.contains('player2')){
                 changeBackground(allSquares[i], 'red')
+                break
+            //end of board
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
             } else {
@@ -647,6 +655,10 @@ const rightDiagonal = (idx) => {
             } else if(allSquares[i].children[0].classList.contains('player1')){
                 changeBackground(allSquares[i], 'red')
                 break
+            // end of board
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                changeBackground(allSquares[i], '#0010ff99')
+                break
             // no pieces
             } else {
                 squares.push(allSquares[i])
@@ -662,6 +674,10 @@ const rightDiagonal = (idx) => {
             // player 2 pieces
             } else if(allSquares[i].children[0].classList.contains('player2')){
                 changeBackground(allSquares[i], 'red')
+                break
+            //end of board
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
             } else {
@@ -687,6 +703,10 @@ const leftDiagonal = (idx) => {
             } else if(allSquares[i].children[0].classList.contains('player1')){
                 changeBackground(allSquares[i], 'red')
                 break
+            // end of board
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                changeBackground(allSquares[i], '#0010ff99')
+                break
             // no pieces
             } else {
                 squares.push(allSquares[i])
@@ -702,6 +722,10 @@ const leftDiagonal = (idx) => {
             // player 2 pieces
             } else if(allSquares[i].children[0].classList.contains('player2')){
                 changeBackground(allSquares[i], 'red')
+                break
+            // end of board
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
             } else {
@@ -723,6 +747,10 @@ const leftDiagonal = (idx) => {
             } else if(allSquares[i].children[0].classList.contains('player1')){
                 changeBackground(allSquares[i], 'red')
                 break
+            // end of board
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                changeBackground(allSquares[i], '#0010ff99')
+                break
             // no pieces
             } else {
                 squares.push(allSquares[i])
@@ -739,6 +767,10 @@ const leftDiagonal = (idx) => {
             } else if(allSquares[i].children[0].classList.contains('player2')){
                 changeBackground(allSquares[i], 'red')
                 break
+            // end of board
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                changeBackground(allSquares[i], '#0010ff99')
+                break
             // no pieces
             } else {
                 squares.push(allSquares[i])
@@ -754,6 +786,7 @@ const leftDiagonal = (idx) => {
 const kingMovement = (evt) => {
     console.log('King Movement function')
     ///removes all other movement backgrounds
+    squares = []
     for(let square of allSquares){
         square.style.background = ''
     }
@@ -773,7 +806,6 @@ const kingMovement = (evt) => {
             square.removeEventListener('click', clicked)
             square.style.background = ''
         }
-        squares = []
     }
 }
 
@@ -941,8 +973,13 @@ const queenMovement = (evt) => {
     let queenSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
     oldSquare = queenSquare[0]
     let idx = squaresArray.indexOf(queenSquare[0])
-    squares = queenMovementOptions(idx)
     if(queenToggle){
+        up(idx)
+        down(idx)
+        // left(idx)
+        right(idx)
+        rightDiagonal(idx)
+        leftDiagonal(idx)
         for(let square of squares){
             square.addEventListener('click', clicked)
         }
