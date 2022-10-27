@@ -93,6 +93,11 @@ const clicked = (evt) => {
     return movePiece(square)
 }
 
+const changeBackground = (element, color) => {
+    element.style.background = `radial-gradient(${window.getComputedStyle(element, null).getPropertyValue('background-color')}, ${window.getComputedStyle(element, null).getPropertyValue('background-color')}, ${color})`
+}
+
+
 
 /////////////////////////////////////////////////////////////////////////   KING MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -102,12 +107,24 @@ const kingMovementRules = (idx) => {
     //if there is a box to the right, left, above or below the piece, then chance bacground color
     if(allSquares[idx + 1]){
         let i = idx + 1
-        if(!allSquares[i].classList.contains('occupied')){
-            squares.push(allSquares[i])
-            //background color
-            if(allSquares[i].classList.contains('enemy')){
+        //Player 1 turn
+        if(playerToggle){
+            // player 2 pieces
+            if(allSquares[i].children[0].classList.contains('player2')){
+                squares.push(allSquares[i])
                 allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
-            } else {
+            } else if(!allSquares[i].classList.contains('occupied')){
+                squares.push(allSquares[i])
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
+            }
+        // Player 2 turn
+        } else {
+            // player 1 pieces
+            if(allSquares[i].children[0].classList.contains('player1')){
+                squares.push(allSquares[i])
+                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
+            } else if(!allSquares[i].classList.contains('occupied')){
+                squares.push(allSquares[i])
                 allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
             }
         }
