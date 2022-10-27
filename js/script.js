@@ -553,6 +553,7 @@ const left = (idx) => {
                 break
             // end of board
             } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
@@ -573,6 +574,7 @@ const left = (idx) => {
                 break
             // end of board
             } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
@@ -601,6 +603,7 @@ const right = (idx) => {
                 break
             // end of board
             } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
@@ -621,6 +624,7 @@ const right = (idx) => {
                 break
             // end of board
             } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
@@ -649,6 +653,7 @@ const rightDiagonal = (idx) => {
                 break
             // end of board
             } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
@@ -669,6 +674,7 @@ const rightDiagonal = (idx) => {
                 break
             //end of board
             } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
@@ -693,6 +699,7 @@ const rightDiagonal = (idx) => {
                 break
             // end of board
             } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
@@ -713,6 +720,7 @@ const rightDiagonal = (idx) => {
                 break
             //end of board
             } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
@@ -741,6 +749,7 @@ const leftDiagonal = (idx) => {
                 break
             // end of board
             } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
@@ -761,6 +770,7 @@ const leftDiagonal = (idx) => {
                 break
             // end of board
             } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
@@ -785,6 +795,7 @@ const leftDiagonal = (idx) => {
                 break
             // end of board
             } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
@@ -805,6 +816,7 @@ const leftDiagonal = (idx) => {
                 break
             // end of board
             } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
