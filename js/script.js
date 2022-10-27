@@ -825,161 +825,11 @@ const kingMovement = (evt) => {
     }
 }
 
-/////////////////////////////////////////////////////////////////////////   QUEEN MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const queenMovementOptions = (idx) => {
-    console.log('Queen Movement Options function')
-    squares = []
-    /////////////////////////////// DOWN //////////////////////////////////////////
-    for(let i = idx + 8; i <= allSquares.length; i += 8){
-        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
-            squares.push(allSquares[i])
-            //background color
-            if(allSquares[i].classList.contains('enemy')){
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
-                break
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-                break
-            } else {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-            }
-        } else {
-            break
-        }
-    }
-    /////////////////////////////// UP //////////////////////////////////////////
-    for(let i = idx - 8; i > 0; i -= 8){
-        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
-            squares.push(allSquares[i])
-            //background color
-            if(allSquares[i].classList.contains('enemy')){
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
-                break
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-                break
-            } else {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-            }
-        } else {
-            break
-        }
-    }
-    /////////////////////////////// Right //////////////////////////////////////////
-    for(let i = idx + 1; i <= allSquares.length; i++){
-        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
-            squares.push(allSquares[i])
-            //background color
-            if(allSquares[i].classList.contains('enemy')){
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
-                break
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-                break
-            } else {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-            }
-        } else {
-            break
-        }
-    }
-    /////////////////////////////// Left //////////////////////////////////////////
-    for(let i = idx - 1; i > 0; i--){
-        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
-            squares.push(allSquares[i])
-            //background color
-            if(allSquares[i].classList.contains('enemy')){
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
-                break
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-                break
-            } else {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-            }
-        } else {
-            break
-        }
-    }
-    /////////////////////////////// Right Diagonal Down //////////////////////////////////////////
-    for(let i = idx + 9; i <= allSquares.length; i += 9){
-        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
-            squares.push(allSquares[i])
-            //background color
-            if(allSquares[i].classList.contains('enemy')){
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
-                break
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-                break
-            } else {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-            }
-        } else {
-            break
-        }
-    }
-    /////////////////////////////// Left Diagonal Up //////////////////////////////////////////
-    for(let i = idx - 9; i > 0; i -= 9){
-        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
-            squares.push(allSquares[i])
-            //background color
-            if(allSquares[i].classList.contains('enemy')){
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
-                break
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-                break
-            } else {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-            }
-        } else {
-            break
-        }
-    }
-    /////////////////////////////// Right Diagonal Up //////////////////////////////////////////
-    for(let i = idx - 7; i > 0; i -= 7){
-        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
-            squares.push(allSquares[i])
-            //background color
-            if(allSquares[i].classList.contains('enemy')){
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
-                break
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-                break
-            } else {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-            }
-        } else {
-            break
-        }
-    }
-    /////////////////////////////// Left Diagonal Down //////////////////////////////////////////
-    for(let i = idx + 7; i <= allSquares.length; i += 7){
-        if(allSquares[i] && !allSquares[i].classList.contains('occupied')){
-            squares.push(allSquares[i])
-            //background color
-            if(allSquares[i].classList.contains('enemy')){
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, green)`
-                break
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')) {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-                break
-            } else {
-                allSquares[i].style.background = `radial-gradient(${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, ${window.getComputedStyle(allSquares[i], null).getPropertyValue('background-color')}, #0010ff99)`
-            }
-        } else {
-            break
-        }
-    }
-    return squares
-}
 
 const queenMovement = (evt) => {
     console.log('queen movement function')
     //removes all other movement backgrounds
+    squares = []
     for(let square of allSquares){
         square.style.background = ''
     }
@@ -992,6 +842,8 @@ const queenMovement = (evt) => {
     if(queenToggle){
         up(idx)
         down(idx)
+        left(idx)
+        right(idx)
         rightDiagonal(idx)
         leftDiagonal(idx)
         for(let square of squares){
