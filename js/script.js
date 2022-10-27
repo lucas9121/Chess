@@ -531,6 +531,10 @@ const left = (idx) => {
             } else if(allSquares[i].children[0].classList.contains('player1')){
                 changeBackground(allSquares[i], 'red')
                 break
+            // end of board
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                changeBackground(allSquares[i], '#0010ff99')
+                break
             // no pieces
             } else {
                 squares.push(allSquares[i])
@@ -546,6 +550,10 @@ const left = (idx) => {
             // player 2 pieces
             } else if(allSquares[i].children[0].classList.contains('player2')){
                 changeBackground(allSquares[i], 'red')
+                break
+            // end of board
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
             } else {
@@ -571,6 +579,10 @@ const right = (idx) => {
             } else if(allSquares[i].children[0].classList.contains('player1')){
                 changeBackground(allSquares[i], 'red')
                 break
+            // end of board
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                changeBackground(allSquares[i], '#0010ff99')
+                break
             // no pieces
             } else {
                 squares.push(allSquares[i])
@@ -586,6 +598,10 @@ const right = (idx) => {
             // player 2 pieces
             } else if(allSquares[i].children[0].classList.contains('player2')){
                 changeBackground(allSquares[i], 'red')
+                break
+            // end of board
+            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
+                changeBackground(allSquares[i], '#0010ff99')
                 break
             // no pieces
             } else {
@@ -976,8 +992,6 @@ const queenMovement = (evt) => {
     if(queenToggle){
         up(idx)
         down(idx)
-        // left(idx)
-        right(idx)
         rightDiagonal(idx)
         leftDiagonal(idx)
         for(let square of squares){
