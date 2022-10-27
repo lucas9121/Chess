@@ -97,6 +97,267 @@ const changeBackground = (element, color) => {
     element.style.background = `radial-gradient(${window.getComputedStyle(element, null).getPropertyValue('background-color')}, ${window.getComputedStyle(element, null).getPropertyValue('background-color')}, ${color})`
 }
 
+/////////////////////////////////////////////////////////////////////////   DIRECTIONS   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const oneAllAround = (idx) => {
+    let i = -1
+    if(allSquares[idx + 1]){
+        i = idx + 1
+        //Player 1 turn
+        if(playerToggle){
+            // player 2 pieces
+            if(allSquares[i].children[0].classList.contains('player2')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 1 pieces
+            } else if(allSquares[i].children[0].classList.contains('player1')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        // Player 2 turn
+        } else {
+            // player 1 pieces
+            if(allSquares[i].children[0].classList.contains('player1')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 2 pieces
+            } else if(allSquares[i].children[0].classList.contains('player2')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        }
+    }
+    if(allSquares[idx - 1]){
+        i = idx - 1
+        //Player 1 turn
+        if(playerToggle){
+            // player 2 pieces
+            if(allSquares[i].children[0].classList.contains('player2')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 1 pieces
+            } else if(allSquares[i].children[0].classList.contains('player1')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        // Player 2 turn
+        } else {
+            // player 1 pieces
+            if(allSquares[i].children[0].classList.contains('player1')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 2 pieces
+            } else if(allSquares[i].children[0].classList.contains('player2')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        }
+    }
+    if(allSquares[idx + 7]){
+        i = idx + 7
+        //Player 1 turn
+        if(playerToggle){
+            // player 2 pieces
+            if(allSquares[i].children[0].classList.contains('player2')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 1 pieces
+            } else if(allSquares[i].children[0].classList.contains('player1')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        // Player 2 turn
+        } else {
+            // player 1 pieces
+            if(allSquares[i].children[0].classList.contains('player1')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 2 pieces
+            } else if(allSquares[i].children[0].classList.contains('player2')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        }
+    }
+    if(allSquares[idx - 7]){
+        i = idx - 7
+        //Player 1 turn
+        if(playerToggle){
+            // player 2 pieces
+            if(allSquares[i].children[0].classList.contains('player2')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 1 pieces
+            } else if(allSquares[i].children[0].classList.contains('player1')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        // Player 2 turn
+        } else {
+            // player 1 pieces
+            if(allSquares[i].children[0].classList.contains('player1')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 2 pieces
+            } else if(allSquares[i].children[0].classList.contains('player2')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        }
+    } 
+    if(allSquares[idx + 8]){
+        i = idx + 8
+        //Player 1 turn
+        if(playerToggle){
+            // player 2 pieces
+            if(allSquares[i].children[0].classList.contains('player2')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 1 pieces
+            } else if(allSquares[i].children[0].classList.contains('player1')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        // Player 2 turn
+        } else {
+            // player 1 pieces
+            if(allSquares[i].children[0].classList.contains('player1')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 2 pieces
+            } else if(allSquares[i].children[0].classList.contains('player2')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        }
+    }
+    if(allSquares[idx - 8]){
+        i = idx - 8
+        //Player 1 turn
+        if(playerToggle){
+            // player 2 pieces
+            if(allSquares[i].children[0].classList.contains('player2')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 1 pieces
+            } else if(allSquares[i].children[0].classList.contains('player1')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        // Player 2 turn
+        } else {
+            // player 1 pieces
+            if(allSquares[i].children[0].classList.contains('player1')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 2 pieces
+            } else if(allSquares[i].children[0].classList.contains('player2')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        }
+    }
+    if(allSquares[idx + 9]){
+        i = idx + 9
+        //Player 1 turn
+        if(playerToggle){
+            // player 2 pieces
+            if(allSquares[i].children[0].classList.contains('player2')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 1 pieces
+            } else if(allSquares[i].children[0].classList.contains('player1')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        // Player 2 turn
+        } else {
+            // player 1 pieces
+            if(allSquares[i].children[0].classList.contains('player1')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 2 pieces
+            } else if(allSquares[i].children[0].classList.contains('player2')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        }
+    }
+    if(allSquares[idx - 9]){
+        i = idx - 9
+        //Player 1 turn
+        if(playerToggle){
+            // player 2 pieces
+            if(allSquares[i].children[0].classList.contains('player2')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 1 pieces
+            } else if(allSquares[i].children[0].classList.contains('player1')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        // Player 2 turn
+        } else {
+            // player 1 pieces
+            if(allSquares[i].children[0].classList.contains('player1')){
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], 'green')
+            // player 2 pieces
+            } else if(allSquares[i].children[0].classList.contains('player2')){
+                changeBackground(allSquares[i], 'red')
+            // no pieces
+            } else {
+                squares.push(allSquares[i])
+                changeBackground(allSquares[i], '#0010ff99')
+            }
+        }
+    } 
+    return squares
+}
 
 
 /////////////////////////////////////////////////////////////////////////   KING MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
