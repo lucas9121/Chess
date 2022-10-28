@@ -94,6 +94,8 @@ function movePiece(clickedEl){
     //Reset toggles
     kingToggle = false
     queenToggle = false
+    bishop1Toggle = false
+    bishop2Toggle = false
 
     // update array
     squaresArray = [...allSquares]
