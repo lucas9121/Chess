@@ -855,6 +855,10 @@ const kingMovement = (evt) => {
         square.style.background = ''
     }
     queenToggle = false
+    bishop1Toggle = false
+    bishop2Toggle = false
+    rook1Toggle = false
+    rook2Toggle = false
     kingToggle = !kingToggle
     movingPiece = evt.target
     let kingSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
