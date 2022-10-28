@@ -899,6 +899,36 @@ const queenMovement = (evt) => {
     return squaresArray = [...allSquares]
 }
 
+const bishopMovement = (evt) => {
+    console.log('bishop movement function')
+    //removes all other movement backgrounds
+    squares = []
+    for(let square of allSquares){
+        square.style.background = ''
+    }
+    kingToggle = false
+    queenToggle = false
+    let movingPiece = evt.target
+    if(movingPiece === p1Bishop1 || movingPiece === p2Bishop1) bishop1Toggle = !bishop1Toggle
+    if(movingPiece === p1Bishop2 || movingPiece === p2Bishop2) bishop2Toggle = !bishop2Toggle
+    let bishopSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
+    oldSquare = bishopSquare[0]
+    let idx = squaresArray.indexOf(oldSquare)
+    if(bishop1Toggle || bishop2Toggle){
+        rightDiagonal(idx)
+        leftDiagonal(idx)
+        for(let square of squares){
+            square.addEventListener('click', clicked)
+        }
+    } else {
+        for(let square of squares){
+            square.removeEventListener('click', clicked)
+            square.style.background = ''
+        }
+    }
+    return squaresArray = [...allSquares]
+}
+
 const p1Turn = () => {
     console.log('Player 1 move')
     //Add Event Listeners
