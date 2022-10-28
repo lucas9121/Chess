@@ -7,6 +7,8 @@ const p1Bishop1 = document.getElementById('p1Bishop1')
 const p1Bishop2 = document.getElementById('p1Bishop2')
 const p2Bishop1 = document.getElementById('p2Bishop1')
 const p2Bishop2 = document.getElementById('p2Bishop2')
+console.log(p1Queen)
+console.log(p1Queen)
 
 // array funcitons availability
 let squaresArray = [...allSquares]
@@ -908,7 +910,7 @@ const bishopMovement = (evt) => {
     }
     kingToggle = false
     queenToggle = false
-    let movingPiece = evt.target
+    movingPiece = evt.target
     if(movingPiece === p1Bishop1 || movingPiece === p2Bishop1) bishop1Toggle = !bishop1Toggle
     if(movingPiece === p1Bishop2 || movingPiece === p2Bishop2) bishop2Toggle = !bishop2Toggle
     let bishopSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
@@ -934,10 +936,14 @@ const p1Turn = () => {
     //Add Event Listeners
     p1King.addEventListener('click', kingMovement)
     p1Queen.addEventListener('click', queenMovement)
+    p1Bishop1.addEventListener('click', bishopMovement)
+    p1Bishop2.addEventListener('click', bishopMovement)
 
     // Remove Event Listeners
     p2King.removeEventListener('click', kingMovement)
     p2Queen.removeEventListener('click', queenMovement)
+    p2Bishop1.removeEventListener('click', bishopMovement)
+    p2Bishop2.removeEventListener('click', bishopMovement)
 }
 
 const p2Turn = () => {
@@ -945,10 +951,14 @@ const p2Turn = () => {
     //Add Event Listeners
     p2King.addEventListener('click', kingMovement)
     p2Queen.addEventListener('click', queenMovement)
+    p2Bishop1.addEventListener('click', bishopMovement)
+    p2Bishop2.addEventListener('click', bishopMovement)
 
     // Remove Event Listeners
     p1King.removeEventListener('click', kingMovement)
     p1Queen.removeEventListener('click', queenMovement)
+    p1Bishop1.removeEventListener('click', bishopMovement)
+    p1Bishop2.removeEventListener('click', bishopMovement)
 }
 
 p1Turn()
