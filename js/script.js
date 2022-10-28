@@ -3,6 +3,10 @@ const p1King = document.querySelector('#p1King')
 const p2King = document.querySelector('#p2King')
 const p1Queen = document.querySelector('#p1Queen')
 const p2Queen = document.querySelector('#p2Queen')
+const p1Bishop1 = document.getElementById('p1Bishop1')
+const p1Bishop2 = document.getElementById('p1Bishop2')
+const p2Bishop1 = document.getElementById('p2Bishop1')
+const p2Bishop2 = document.getElementById('p2Bishop2')
 
 // array funcitons availability
 let squaresArray = [...allSquares]
@@ -17,6 +21,8 @@ let squares = []
 let playerToggle = true
 let kingToggle = false
 let queenToggle = false
+let bishop1Toggle = false
+let bishop2Toggle = false
 
 /////////////////////////////////////// Players info ///////////////////////////////////////
 const playerOne = {
