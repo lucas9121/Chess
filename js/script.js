@@ -102,6 +102,8 @@ function movePiece(clickedEl){
     queenToggle = false
     bishop1Toggle = false
     bishop2Toggle = false
+    rook1Toggle = false
+    rook2Toggle = false
 
     // update array
     squaresArray = [...allSquares]
