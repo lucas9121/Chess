@@ -7,8 +7,10 @@ const p1Bishop1 = document.getElementById('p1Bishop1')
 const p1Bishop2 = document.getElementById('p1Bishop2')
 const p2Bishop1 = document.getElementById('p2Bishop1')
 const p2Bishop2 = document.getElementById('p2Bishop2')
-console.log(p1Queen)
-console.log(p1Queen)
+const p1Rook1 = document.getElementById('p1Rook1')
+const p1Rook2 = document.getElementById('p1Rook2')
+const p2Rook1 = document.getElementById('p2Rook1')
+const p2Rook2 = document.getElementById('p2Rook2')
 
 // array funcitons availability
 let squaresArray = [...allSquares]
@@ -25,6 +27,8 @@ let kingToggle = false
 let queenToggle = false
 let bishop1Toggle = false
 let bishop2Toggle = false
+let rook1Toggle = false
+let rook2Toggle = false
 
 /////////////////////////////////////// Players info ///////////////////////////////////////
 const playerOne = {
