@@ -853,6 +853,7 @@ const leftDiagonal = (idx) => {
     return squares
 }
 const lDirection = (idx) => {
+    console.log(idx)
     let i = -1
     if(allSquares[idx + 15]){
         i = idx + 15
@@ -1047,6 +1048,10 @@ const lDirection = (idx) => {
         }
     }
     if(allSquares[idx + 6]){
+        // The index before is last item on board in new row
+        if(allSquares[idx + 7].classList.contains('H')) return squares
+        if(allSquares[idx + 7].classList.contains('A')) return squares
+        // index is still in new row
         i = idx + 6
         //Player 1 turn
         if(playerToggle){
@@ -1079,7 +1084,12 @@ const lDirection = (idx) => {
         }
     }
     if(allSquares[idx - 6]){
+        // The index before is last item on board in new row
+        if(allSquares[idx - 7].classList.contains('H')) return squares
+        if(allSquares[idx - 7].classList.contains('A')) return squares
+        // index is still in new row
         i = idx - 6
+        if(!allSquares[i]) return squares
         //Player 1 turn
         if(playerToggle){
             // player 2 pieces
@@ -1110,6 +1120,7 @@ const lDirection = (idx) => {
             }
         }
     }
+    return squares
 }
 
 /////////////////////////////////////////////////////////////////////////   PIECES MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1241,7 +1252,7 @@ const knightMovement = (evt) => {
     let idx = squaresArray.indexOf(oldSquare)
     if(knight1Toggle || knight2Toggle){
         lDirection(idx)
-        for(let square of sqaures){
+        for(let square of squares){
             square.addEventListener('click', clicked)
         }
     } else {
