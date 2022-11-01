@@ -1195,6 +1195,10 @@ const bishopMovement = (evt) => {
     }
     kingToggle = false
     queenToggle = false
+    knight1Toggle = false
+    knight2Toggle = false
+    rook1Toggle = false
+    rook2Toggle = false
     movingPiece = evt.target
     if(movingPiece === p1Bishop1 || movingPiece === p2Bishop1) bishop1Toggle = !bishop1Toggle
     if(movingPiece === p1Bishop2 || movingPiece === p2Bishop2) bishop2Toggle = !bishop2Toggle
