@@ -11,6 +11,10 @@ const p1Rook1 = document.getElementById('p1Rook1')
 const p1Rook2 = document.getElementById('p1Rook2')
 const p2Rook1 = document.getElementById('p2Rook1')
 const p2Rook2 = document.getElementById('p2Rook2')
+const p1Knight1 = document.getElementById('p1Knight1')
+const p1Knight2 = document.getElementById('p1Knight2')
+const p2Knight1 = document.getElementById('p2Knight1')
+const p2Knight2 = document.getElementById('p2Knight2')
 
 // array funcitons availability
 let squaresArray = [...allSquares]
@@ -27,6 +31,8 @@ let kingToggle = false
 let queenToggle = false
 let bishop1Toggle = false
 let bishop2Toggle = false
+let knight1Toggle = false
+let knight2Toggle = false
 let rook1Toggle = false
 let rook2Toggle = false
 
@@ -102,6 +108,8 @@ function movePiece(clickedEl){
     queenToggle = false
     bishop1Toggle = false
     bishop2Toggle = false
+    knight1Toggle = false
+    knight2Toggle = false
     rook1Toggle = false
     rook2Toggle = false
 
