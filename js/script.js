@@ -1296,6 +1296,8 @@ const p1Turn = () => {
     p1Queen.addEventListener('click', queenMovement)
     p1Bishop1.addEventListener('click', bishopMovement)
     p1Bishop2.addEventListener('click', bishopMovement)
+    p1Knight1.addEventListener('click', knightMovement)
+    p1Knight2.addEventListener('click', knightMovement)
     p1Rook1.addEventListener('click', rookMovement)
     p1Rook2.addEventListener('click', rookMovement)
 
@@ -1304,6 +1306,8 @@ const p1Turn = () => {
     p2Queen.removeEventListener('click', queenMovement)
     p2Bishop1.removeEventListener('click', bishopMovement)
     p2Bishop2.removeEventListener('click', bishopMovement)
+    p2Knight1.removeEventListener('click', knightMovement)
+    p2Knight2.removeEventListener('click', knightMovement)
     p2Rook1.removeEventListener('click', rookMovement)
     p2Rook2.removeEventListener('click', rookMovement)
 }
@@ -1315,6 +1319,8 @@ const p2Turn = () => {
     p2Queen.addEventListener('click', queenMovement)
     p2Bishop1.addEventListener('click', bishopMovement)
     p2Bishop2.addEventListener('click', bishopMovement)
+    p2Knight1.addEventListener('click', knightMovement)
+    p2Knight2.addEventListener('click', knightMovement)
     p2Rook1.addEventListener('click', rookMovement)
     p2Rook2.addEventListener('click', rookMovement)
 
@@ -1323,6 +1329,8 @@ const p2Turn = () => {
     p1Queen.removeEventListener('click', queenMovement)
     p1Bishop1.removeEventListener('click', bishopMovement)
     p1Bishop2.removeEventListener('click', bishopMovement)
+    p1Knight1.removeEventListener('click', knightMovement)
+    p1Knight2.removeEventListener('click', knightMovement)
     p1Rook1.removeEventListener('click', rookMovement)
     p1Rook2.removeEventListener('click', rookMovement)
 }
