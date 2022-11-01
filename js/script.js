@@ -1124,6 +1124,8 @@ const kingMovement = (evt) => {
     queenToggle = false
     bishop1Toggle = false
     bishop2Toggle = false
+    knight1Toggle = false
+    knight2Toggle = false
     rook1Toggle = false
     rook2Toggle = false
     kingToggle = !kingToggle
