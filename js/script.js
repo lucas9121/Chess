@@ -1231,6 +1231,8 @@ const rookMovement = (evt) => {
     queenToggle = false
     bishop1Toggle = false
     bishop2Toggle = false
+    knight1Toggle = false
+    knight2Toggle = false
     movingPiece = evt.target
     if(movingPiece === p1Rook1 || movingPiece === p2Rook1) rook1Toggle = !rook1Toggle
     if(movingPiece === p1Rook2 || movingPiece === p2Rook2) rook2Toggle = !rook2Toggle
