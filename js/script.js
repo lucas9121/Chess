@@ -1220,6 +1220,39 @@ const bishopMovement = (evt) => {
     return squaresArray = [...allSquares]
 }
 
+const knightMovement = (evt) => {
+    console.log('knight movement function')
+    //removes all other movement backgrounds
+    squares = []
+    for(let square of allSquares){
+        square.style.background = ''
+    }
+    kingToggle = false
+    queenToggle = false
+    bishop1Toggle = false
+    bishop2Toggle = false
+    rook1Toggle = false
+    rook2Toggle = false
+    movingPiece = evt.target
+    if(movingPiece === p1Knight1 || movingPiece === p2Knight1) knight1Toggle = !knight1Toggle
+    if(movingPiece === p1Knight2 || movingPiece === p2Knight2) knight2Toggle = !knight2Toggle
+    let knightSqaure = squaresArray.filter((square) => square.children[0] === movingPiece)
+    oldSquare = knightSqaure[0]
+    let idx = squaresArray.indexOf(oldSquare)
+    if(knight1Toggle || knight2Toggle){
+        lDirection(idx)
+        for(let square of sqaures){
+            square.addEventListener('click', clicked)
+        }
+    } else {
+        for(let square of squares){
+            square.removeEventListener('click', clicked)
+            square.style.background = ''
+        }
+    }
+    return squaresArray = [...allSquares]
+}
+
 const rookMovement = (evt) => {
     console.log('rook moevement function')
     //removes all other backgrouns
