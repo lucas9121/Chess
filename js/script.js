@@ -15,6 +15,8 @@ const p1Knight1 = document.getElementById('p1Knight1')
 const p1Knight2 = document.getElementById('p1Knight2')
 const p2Knight1 = document.getElementById('p2Knight1')
 const p2Knight2 = document.getElementById('p2Knight2')
+const p1Pawns = document.querySelectorAll('.p1Pawn')
+const p2Pawns = document.querySelectorAll('.p2Pawn')
 
 // array funcitons availability
 let squaresArray = [...allSquares]
@@ -48,6 +50,16 @@ const playerOne = {
     
 }
 
+// adding Pawns
+p1Pawns.forEach((pawn) => {
+    playerOne.pawns.push({
+        name: pawn,
+        moves: 0
+    })
+})
+
+console.log(playerOne)
+
 const playerTwo = {
     name: 'Computer',
     king: p2King,
@@ -58,6 +70,15 @@ const playerTwo = {
     pawns: []
     
 }
+
+
+// adding Pawns
+p2Pawns.forEach((pawn) => {
+    playerOne.pawns.push({
+        name: pawn,
+        moves: 0
+    })
+})
 
 // adds square name
 for(let square of allSquares){
