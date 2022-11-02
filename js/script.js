@@ -43,9 +43,9 @@ const playerOne = {
     name: 'Me',
     king: p1King,
     queen: p1Queen,
-    knights: [],
-    rooks: [],
-    bishops: [],
+    knights: [p1Knight1, p1Knight2],
+    rooks: [p1Rook1, p1Rook2],
+    bishops: [p1Bishop1, p1Bishop2],
     pawns: []
     
 }
