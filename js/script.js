@@ -64,9 +64,9 @@ const playerTwo = {
     name: 'Computer',
     king: p2King,
     queen: p2Queen,
-    knights: [],
-    rooks: [],
-    bishops: [],
+    knights: [p2Knight1, p2Knight2],
+    rooks: [p2Rook1, p2Rook2],
+    bishops: [p2Bishop1, p2Bishop1],
     pawns: []
     
 }
