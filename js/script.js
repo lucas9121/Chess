@@ -175,6 +175,42 @@ const findSquare = (r, c) => {
     return square[0]
 }
 
+const direction = (r, c) => {     
+    let newSquare = findSquare(r, c)
+    if(newSquare) {
+        //Player 1 turn
+        if(playerToggle){
+            // player 2 pieces
+            if(newSquare.children[0].classList.contains('player2')){
+                squares.push(newSquare)
+                changeBackground(newSquare, 'green')
+            // player 1 pieces
+            } else if(newSquare.children[0].classList.contains('player1')){
+                changeBackground(newSquare, 'red')
+            // no pieces
+            } else {
+                squares.push(newSquare)
+                changeBackground(newSquare, '#0010ff99')
+            }
+        // Player 2
+        } else {
+            // player 1 pieces
+            if(newSquare.children[0].classList.contains('player1')){
+                squares.push(newSquare)
+                changeBackground(newSquare, 'green')
+            // player 2 pieces
+            } else if(newSquare.children[0].classList.contains('player2')){
+                changeBackground(newSquare, 'red')
+            // no pieces
+            } else {
+                squares.push(newSquare)
+                changeBackground(newSquare, '#0010ff99')
+            }
+        }
+    }
+    return squares
+}
+
 /////////////////////////////////////////////////////////////////////////   DIRECTIONS   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const oneAllAround = (r, c) => {
     let i = -1
