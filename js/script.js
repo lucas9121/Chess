@@ -18,6 +18,12 @@ const p2Knight2 = document.getElementById('p2Knight2')
 const p1Pawns = document.querySelectorAll('.p1Pawn')
 const p2Pawns = document.querySelectorAll('.p2Pawn')
 
+
+/////// ROWS and COLUMNS///////
+const rows = ['1', '2', '3', '4', '5', '6', '7', '8']
+
+const columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+
 // array funcitons availability
 let squaresArray = [...allSquares]
 
@@ -162,8 +168,11 @@ const changeBackground = (element, color) => {
     element.style.background = `radial-gradient(${window.getComputedStyle(element, null).getPropertyValue('background-color')}, ${window.getComputedStyle(element, null).getPropertyValue('background-color')}, ${color})`
 }
 
+
+
 /////////////////////////////////////////////////////////////////////////   DIRECTIONS   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const oneAllAround = (idx) => {
+const oneAllAround = (r, c) => {
+
     let i = -1
     if(allSquares[idx + 1]){
         i = idx + 1
@@ -1164,9 +1173,12 @@ const kingMovement = (evt) => {
     movingPiece = evt.target
     let kingSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
     oldSquare = kingSquare[0]
-    let idx = squaresArray.indexOf(kingSquare[0])
+    console.log(oldSquare.className)
+    // row and column of piece and its equivalent in the arrays
+    let row = rows.indexOf(oldSquare.classList[2])
+    let column = columns.indexOf(oldSquare.classList[1])
     if(kingToggle){
-        oneAllAround(idx)
+        oneAllAround(row, column)
         for(let square of squares){
             square.addEventListener('click', clicked)
         }
