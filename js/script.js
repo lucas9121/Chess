@@ -168,11 +168,15 @@ const changeBackground = (element, color) => {
     element.style.background = `radial-gradient(${window.getComputedStyle(element, null).getPropertyValue('background-color')}, ${window.getComputedStyle(element, null).getPropertyValue('background-color')}, ${color})`
 }
 
-
+const findSquare = (r, c) => {
+    let row = rows[r]
+    let column = columns[c]
+    let square = squaresArray.filter((square) => square.className === `square ${column} ${row}`)
+    return square[0]
+}
 
 /////////////////////////////////////////////////////////////////////////   DIRECTIONS   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const oneAllAround = (r, c) => {
-
     let i = -1
     if(allSquares[idx + 1]){
         i = idx + 1
