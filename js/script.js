@@ -175,7 +175,7 @@ const findSquare = (r, c) => {
     return square[0]
 }
 
-const direction = (r, c) => {     
+const direction = (r, c) => { 
     let newSquare = findSquare(r, c)
     if(newSquare) {
         //Player 1 turn
@@ -212,266 +212,6 @@ const direction = (r, c) => {
 }
 
 /////////////////////////////////////////////////////////////////////////   DIRECTIONS   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const oneAllAround = (r, c) => {
-    let i = -1
-    if(allSquares[idx + 1]){
-        i = idx + 1
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
-    if(allSquares[idx - 1]){
-        i = idx - 1
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
-    if(allSquares[idx + 7]){
-        i = idx + 7
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
-    if(allSquares[idx - 7]){
-        i = idx - 7
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    } 
-    if(allSquares[idx + 8]){
-        i = idx + 8
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
-    if(allSquares[idx - 8]){
-        i = idx - 8
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
-    if(allSquares[idx + 9]){
-        i = idx + 9
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
-    if(allSquares[idx - 9]){
-        i = idx - 9
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    } 
-    return squares
-}
 
 const upOne = (idx, pawn) => {
     let i = -1
@@ -1202,6 +942,8 @@ const kingMovement = (evt) => {
     for(let square of allSquares){
         square.style.background = ''
     }
+
+    // Toggle 
     queenToggle = false
     bishop1Toggle = false
     bishop2Toggle = false
@@ -1210,15 +952,27 @@ const kingMovement = (evt) => {
     rook1Toggle = false
     rook2Toggle = false
     kingToggle = !kingToggle
+
+    // global variables
     movingPiece = evt.target
     let kingSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
     oldSquare = kingSquare[0]
-    console.log(oldSquare.className)
+
     // row and column of piece and its equivalent in the arrays
     let row = rows.indexOf(oldSquare.classList[2])
     let column = columns.indexOf(oldSquare.classList[1])
+    
     if(kingToggle){
-        oneAllAround(row, column)
+        // possible moves for king piece
+        direction(row + 1, column)
+        direction(row - 1, column)
+        direction(row, column + 1)
+        direction(row, column - 1)
+        direction(row + 1, column + 1)
+        direction(row - 1, column - 1)
+        direction(row + 1, column - 1)
+        direction(row - 1, column + 1)
+
         for(let square of squares){
             square.addEventListener('click', clicked)
         }
