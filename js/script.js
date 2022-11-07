@@ -256,43 +256,9 @@ const up = (row, column) => {
     return squares
 }
 
-const down = (idx) => {
-    for(let i = idx + 8; i <= allSquares.length; i += 8){
-        if(!allSquares[i]) break
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
+const down = (row, column) => {
+    let possibleSq = direction(row - 1, column)
+    if(possibleSq) squares.push(possibleSq)
     return squares
 }
 
