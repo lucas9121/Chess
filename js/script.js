@@ -184,13 +184,15 @@ const direction = (r, c) => {
             if(newSquare.children[0].classList.contains('player2')){
                 // squares.push(newSquare)
                 changeBackground(newSquare, 'green')
+                return newSquare
             // player 1 pieces
             } else if(newSquare.children[0].classList.contains('player1')){
                 changeBackground(newSquare, 'red')
             // no pieces
             } else {
-                squares.push(newSquare)
+                // squares.push(newSquare)
                 changeBackground(newSquare, '#0010ff99')
+                return newSquare
             }
         // Player 2
         } else {
@@ -198,6 +200,7 @@ const direction = (r, c) => {
             if(newSquare.children[0].classList.contains('player1')){
                 // squares.push(newSquare)
                 changeBackground(newSquare, 'green')
+                return newSquare
             // player 2 pieces
             } else if(newSquare.children[0].classList.contains('player2')){
                 changeBackground(newSquare, 'red')
@@ -205,26 +208,28 @@ const direction = (r, c) => {
             } else {
                 // squares.push(newSquare)
                 changeBackground(newSquare, '#0010ff99')
+                return newSquare
             }
         }
     }
-    return newSquare
 }
 
 /////////////////////////////////////////////////////////////////////////   DIRECTIONS   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const allAround = (row, column) => {
-    direction(row + 1, column)
-    direction(row - 1, column)
-    direction(row, column + 1)
-    direction(row, column - 1)
-    direction(row + 1, column + 1)
-    direction(row - 1, column - 1)
-    direction(row + 1, column - 1)
-    direction(row - 1, column + 1)
+    if(direction(row + 1, column))squares.push(direction(row + 1, column))
+    if(direction(row - 1, column))squares.push(direction(row - 1, column))
+    if(direction(row, column + 1))squares.push(direction(row, column + 1))
+    if(direction(row, column - 1))squares.push(direction(row, column - 1))
+    if(direction(row + 1, column + 1))squares.push(direction(row + 1, column + 1))
+    if(direction(row - 1, column - 1))squares.push(direction(row - 1, column - 1))
+    if(direction(row + 1, column - 1))squares.push(direction(row + 1, column - 1))
+    if(direction(row - 1, column + 1))squares.push(direction(row - 1, column + 1))
+    console.log(squares)
 }
 
 const upDown = (row, column) => {
+    let possibleSq
     //up
     for(let i = 1; i < 8; i++){
         possibleSq = direction(row + i, column)
@@ -245,121 +250,9 @@ const upDown = (row, column) => {
     return squares
 }
 
-const upOne = (idx, pawn) => {
-    let i = -1
-    //Player 1 turn
-    if(playerToggle){
-        // if pawn hasn't moved yet
-        if(playerOne.pawns[pawn].movement === 0) {
-        //if pawn has already moved
-        } else {
-            if(allSquares[idx - 8]){
-            i = idx - 8
-                // player 2 pieces
-                if(allSquares[i].children[0].classList.contains('player2')){
-                    squares.push(allSquares[i])
-                    changeBackground(allSquares[i], 'green')
-                // player 1 pieces
-                } else if(allSquares[i].children[0].classList.contains('player1')){
-                    changeBackground(allSquares[i], 'red')
-                // no pieces
-                } else {
-                    squares.push(allSquares[i])
-                    changeBackground(allSquares[i], '#0010ff99')
-                }
-            // Player 2 turn
-            } else {
-                // player 1 pieces
-                if(allSquares[i].children[0].classList.contains('player1')){
-                    squares.push(allSquares[i])
-                    changeBackground(allSquares[i], 'green')
-                // player 2 pieces
-                } else if(allSquares[i].children[0].classList.contains('player2')){
-                    changeBackground(allSquares[i], 'red')
-                // no pieces
-                } else {
-                    squares.push(allSquares[i])
-                    changeBackground(allSquares[i], '#0010ff99')
-                }
-            }
-        }
-    // Player 2
-    } else {
-        // if pawn hasn't moved yet
-        if(playerOne.pawns[pawn].movement === 0) {
-        //if pawn has already moved
-        } else {
-            if(allSquares[idx + 8]){
-            i = idx + 8
-                // player 2 pieces
-                if(allSquares[i].children[0].classList.contains('player2')){
-                    squares.push(allSquares[i])
-                    changeBackground(allSquares[i], 'green')
-                // player 1 pieces
-                } else if(allSquares[i].children[0].classList.contains('player1')){
-                    changeBackground(allSquares[i], 'red')
-                // no pieces
-                } else {
-                    squares.push(allSquares[i])
-                    changeBackground(allSquares[i], '#0010ff99')
-                }
-            // Player 2 turn
-            } else {
-                // player 1 pieces
-                if(allSquares[i].children[0].classList.contains('player1')){
-                    squares.push(allSquares[i])
-                    changeBackground(allSquares[i], 'green')
-                // player 2 pieces
-                } else if(allSquares[i].children[0].classList.contains('player2')){
-                    changeBackground(allSquares[i], 'red')
-                // no pieces
-                } else {
-                    squares.push(allSquares[i])
-                    changeBackground(allSquares[i], '#0010ff99')
-                }
-            }
-        }
-    }
-    return squares
-}
-
-const up = (idx) => {
-    for(let i = idx - 8; i >= 0; i -= 8){
-        if(!allSquares[i]) break
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
+const up = (row, column) => {
+    let possibleSq = direction(row + 1, column)
+    if(possibleSq) squares.push(possibleSq)
     return squares
 }
 
