@@ -182,7 +182,7 @@ const direction = (r, c) => {
         if(playerToggle){
             // player 2 pieces
             if(newSquare.children[0].classList.contains('player2')){
-                squares.push(newSquare)
+                // squares.push(newSquare)
                 changeBackground(newSquare, 'green')
             // player 1 pieces
             } else if(newSquare.children[0].classList.contains('player1')){
@@ -196,19 +196,19 @@ const direction = (r, c) => {
         } else {
             // player 1 pieces
             if(newSquare.children[0].classList.contains('player1')){
-                squares.push(newSquare)
+                // squares.push(newSquare)
                 changeBackground(newSquare, 'green')
             // player 2 pieces
             } else if(newSquare.children[0].classList.contains('player2')){
                 changeBackground(newSquare, 'red')
             // no pieces
             } else {
-                squares.push(newSquare)
+                // squares.push(newSquare)
                 changeBackground(newSquare, '#0010ff99')
             }
         }
     }
-    return squares
+    return newSquare
 }
 
 /////////////////////////////////////////////////////////////////////////   DIRECTIONS   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -424,15 +424,19 @@ const left = (idx) => {
 const right = (idx) => {
     for(let i = idx + 1; i <= allSquares.length; i++){
         if(!allSquares[i]) break
+        console.log(allSquares[i])
         //Player 1 turn
         if(playerToggle){
             // player 2 pieces
             if(allSquares[i].children[0].classList.contains('player2')){
+                console.log('option 1')
                 squares.push(allSquares[i])
                 changeBackground(allSquares[i], 'green')
                 break
             // player 1 pieces
             } else if(allSquares[i].children[0].classList.contains('player1')){
+                console.log('remove line below')
+                squares.push(allSquares[i])
                 changeBackground(allSquares[i], 'red')
                 break
             // end of board
@@ -961,9 +965,9 @@ const kingMovement = (evt) => {
     // row and column of piece and its equivalent in the arrays
     let row = rows.indexOf(oldSquare.classList[2])
     let column = columns.indexOf(oldSquare.classList[1])
-    
+
     if(kingToggle){
-        // possible moves for king piece
+        // possible moves for piece
         direction(row + 1, column)
         direction(row - 1, column)
         direction(row, column + 1)
@@ -992,6 +996,8 @@ const queenMovement = (evt) => {
     for(let square of allSquares){
         square.style.background = ''
     }
+
+    // Toggle
     kingToggle = false
     bishop1Toggle = false
     bishop2Toggle = false
@@ -1000,17 +1006,100 @@ const queenMovement = (evt) => {
     rook1Toggle = false
     rook2Toggle = false
     queenToggle = !queenToggle
+
+    // global pieces
     movingPiece = evt.target
     let queenSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
     oldSquare = queenSquare[0]
-    let idx = squaresArray.indexOf(queenSquare[0])
+
+    // row and column of piece and its equivalent in the arrays
+    let row = rows.indexOf(oldSquare.classList[2])
+    let column = columns.indexOf(oldSquare.classList[1])
+
+    let idx = squaresArray.indexOf(oldSquare)
+
+    let possibleSq 
+
     if(queenToggle){
-        up(idx)
-        down(idx)
-        left(idx)
-        right(idx)
-        rightDiagonal(idx)
-        leftDiagonal(idx)
+        // possible moves for piece
+        // up
+        for(let i = 1; i < 8; i++){
+            possibleSq = direction(row + i, column)
+            console.log(possibleSq.children.length)
+            // if function didn't return anything
+            if(!possibleSq) break
+            if(possibleSq.children.length > 1) break
+        }
+        // down
+        for(let i = 1; i < 8; i++){
+            possibleSq = direction(row - i, column)
+            console.log(possibleSq)
+            // if function didn't return anything
+            if(!possibleSq) break
+            if(possibleSq.children.length > 1) break
+        }
+        //left
+        for(let i = 1; i < 8; i++){
+            possibleSq = direction(row, column - i)
+            // console.log(possibleSq)
+            // if function didn't return anything
+            if(!possibleSq) break
+            if(possibleSq.children.length > 1) break
+            
+        }
+        //right
+        for(let i = 1; i < 8; i++){
+            possibleSq = direction(row, column + i)
+            // console.log(possibleSq)
+            // if function didn't return anything
+            if(!possibleSq) break
+            if(possibleSq.children.length > 1) break
+            
+        }
+
+
+        //right over
+        for(let i = 1; i < 8; i++){
+            possibleSq = direction(row + i, column + i)
+            // if function didn't return anything
+            if(!possibleSq) break
+            if(possibleSq.children.length > 1) break
+            
+            // console.log(possibleSq)
+        }
+
+        //right under
+        // for(let i = 1; i < 8; i++){
+        //     possibleSq = direction(row - i, column + i)
+        //     console.log(possibleSq)
+        //     // if function didn't return anything
+        //     if(possibleSq.length === 0) break
+        //     possibleSq = []
+        // }
+
+
+        //left over
+        for(let i = 1; i < 8; i++){
+            possibleSq = direction(row + i, column - i)
+            // if function didn't return anything
+            if(!possibleSq) break
+            if(possibleSq.children.length > 1) break
+            
+        }
+        //left under
+        for(let i = 1; i < 8; i++){
+            possibleSq = direction(row - i, column - i)
+            // if function didn't return anything
+            if(!possibleSq) break
+            if(possibleSq.children.length > 1) break
+            
+        }
+        // up(idx)
+        // down(idx)
+        // left(idx)
+        // right(idx)
+        // rightDiagonal(idx)
+        // leftDiagonal(idx)
         for(let square of squares){
             square.addEventListener('click', clicked)
         }
