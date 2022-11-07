@@ -239,6 +239,28 @@ const upDown = (row, column) => {
     return squares
 }
 
+const leftRight = (row, column) => {
+    let possibleSq
+    //left
+    for(let i = 1; i < 8; i++){
+        possibleSq = direction(row, column - i)
+        if(possibleSq) squares.push(possibleSq)
+        // if function didn't return anything
+        if(!possibleSq) break
+        // if square already has a piece
+        if(possibleSq.children.length > 1) break
+    }
+    // right
+    for(let i = 1; i < 8; i++){
+        possibleSq = direction(row, column + i)
+        if(possibleSq) squares.push(possibleSq)
+        // if function didn't return anything
+        if(!possibleSq) break
+        if(possibleSq.children.length > 1) break
+    }
+    return squares
+}
+
 const up = (row, column) => {
     let possibleSq = direction(row + 1, column)
     if(possibleSq) squares.push(possibleSq)
