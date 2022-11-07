@@ -213,6 +213,17 @@ const direction = (r, c) => {
 
 /////////////////////////////////////////////////////////////////////////   DIRECTIONS   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+const allAround = (row, column) => {
+    direction(row + 1, column)
+    direction(row - 1, column)
+    direction(row, column + 1)
+    direction(row, column - 1)
+    direction(row + 1, column + 1)
+    direction(row - 1, column - 1)
+    direction(row + 1, column - 1)
+    direction(row - 1, column + 1)
+}
+
 const upOne = (idx, pawn) => {
     let i = -1
     //Player 1 turn
