@@ -267,6 +267,11 @@ const left = (row, column) => {
     if(possibleSq) squares.push(possibleSq)
     return squares
 }
+const leftOver = (row, column) => {
+    let possibleSq = direction(row + 1, column - 1)
+    if(possibleSq) squares.push(possibleSq)
+    return squares
+}
 
 const right = (row, column) => {
     let possibleSq = direction(row, column + 1)
