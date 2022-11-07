@@ -979,15 +979,8 @@ const kingMovement = (evt) => {
 
     if(kingToggle){
         // possible moves for piece
-        direction(row + 1, column)
-        direction(row - 1, column)
-        direction(row, column + 1)
-        direction(row, column - 1)
-        direction(row + 1, column + 1)
-        direction(row - 1, column - 1)
-        direction(row + 1, column - 1)
-        direction(row - 1, column + 1)
-
+        allAround(row, column)
+        
         for(let square of squares){
             square.addEventListener('click', clicked)
         }
