@@ -216,17 +216,6 @@ const direction = (r, c) => {
 
 /////////////////////////////////////////////////////////////////////////   DIRECTIONS   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const allAround = (row, column) => {
-    if(direction(row + 1, column))squares.push(direction(row + 1, column))
-    if(direction(row - 1, column))squares.push(direction(row - 1, column))
-    if(direction(row, column + 1))squares.push(direction(row, column + 1))
-    if(direction(row, column - 1))squares.push(direction(row, column - 1))
-    if(direction(row + 1, column + 1))squares.push(direction(row + 1, column + 1))
-    if(direction(row - 1, column - 1))squares.push(direction(row - 1, column - 1))
-    if(direction(row + 1, column - 1))squares.push(direction(row + 1, column - 1))
-    if(direction(row - 1, column + 1))squares.push(direction(row - 1, column + 1))
-    console.log(squares)
-}
 
 const upDown = (row, column) => {
     let possibleSq
@@ -295,6 +284,17 @@ const rightUnder = (row, column) => {
     let possibleSq = direction(row - 1, column + 1)
     if(possibleSq) squares.push(possibleSq)
     return squares
+}
+
+const allAround = (row, column) => {
+    up(row, column)
+    down(row, column)
+    left(row, column)
+    right(row, column)
+    rightOver(row, column)
+    rightUnder(row, column)
+    leftOver(row, column)
+    leftUnder(row, column)
 }
 
 const rightDiagonal = (idx) => {
