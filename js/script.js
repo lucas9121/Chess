@@ -224,6 +224,27 @@ const allAround = (row, column) => {
     direction(row - 1, column + 1)
 }
 
+const upDown = (row, column) => {
+    //up
+    for(let i = 1; i < 8; i++){
+        possibleSq = direction(row + i, column)
+        if(possibleSq) squares.push(possibleSq)
+        // if function didn't return anything
+        if(!possibleSq) break
+        // if square already has a piece
+        if(possibleSq.children.length > 1) break
+    }
+    // down
+    for(let i = 1; i < 8; i++){
+        possibleSq = direction(row - i, column)
+        if(possibleSq) squares.push(possibleSq)
+        // if function didn't return anything
+        if(!possibleSq) break
+        if(possibleSq.children.length > 1) break
+    }
+    return squares
+}
+
 const upOne = (idx, pawn) => {
     let i = -1
     //Player 1 turn
@@ -980,7 +1001,7 @@ const kingMovement = (evt) => {
     if(kingToggle){
         // possible moves for piece
         allAround(row, column)
-        
+
         for(let square of squares){
             square.addEventListener('click', clicked)
         }
@@ -1025,23 +1046,23 @@ const queenMovement = (evt) => {
     let possibleSq 
 
     if(queenToggle){
+        upDown(row, column)
         // possible moves for piece
-        // up
-        for(let i = 1; i < 8; i++){
-            possibleSq = direction(row + i, column)
-            console.log(possibleSq.children.length)
-            // if function didn't return anything
-            if(!possibleSq) break
-            if(possibleSq.children.length > 1) break
-        }
-        // down
-        for(let i = 1; i < 8; i++){
-            possibleSq = direction(row - i, column)
-            console.log(possibleSq)
-            // if function didn't return anything
-            if(!possibleSq) break
-            if(possibleSq.children.length > 1) break
-        }
+        // // up
+        // for(let i = 1; i < 8; i++){
+        //     possibleSq = direction(row + i, column)
+        //     // if function didn't return anything
+        //     if(!possibleSq) break
+        //     if(possibleSq.children.length > 1) break
+        // }
+        // // down
+        // for(let i = 1; i < 8; i++){
+        //     possibleSq = direction(row - i, column)
+        //     console.log(possibleSq)
+        //     // if function didn't return anything
+        //     if(!possibleSq) break
+        //     if(possibleSq.children.length > 1) break
+        // }
         //left
         for(let i = 1; i < 8; i++){
             possibleSq = direction(row, column - i)
