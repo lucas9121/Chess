@@ -261,6 +261,48 @@ const leftRight = (row, column) => {
     return squares
 }
 
+const diagonal = (row, column) => {
+    let possibleSq
+    // left over
+    for(let i = 1; i < 8; i++){
+        possibleSq = direction(row + i, column - i)
+        if(possibleSq) squares.push(possibleSq)
+        // if function didn't return anything
+        if(!possibleSq) break
+        // if square already has a piece
+        if(possibleSq.children.length > 1) break
+    }
+
+    // left under
+    for(let i = 1; i < 8; i++){
+        possibleSq = direction(row - i, column - i)
+        if(possibleSq) squares.push(possibleSq)
+        // if function didn't return anything
+        if(!possibleSq) break
+        if(possibleSq.children.length > 1) break
+    }
+
+    // right over
+    for(let i = 1; i < 8; i++){
+        possibleSq = direction(row + i, column + i)
+        if(possibleSq) squares.push(possibleSq)
+        // if function didn't return anything
+        if(!possibleSq) break
+        // if square already has a piece
+        if(possibleSq.children.length > 1) break
+    }
+
+    // right under
+    for(let i = 1; i < 8; i++){
+        possibleSq = direction(row - i, column + i)
+        if(possibleSq) squares.push(possibleSq)
+        // if function didn't return anything
+        if(!possibleSq) break
+        if(possibleSq.children.length > 1) break
+    }
+    return squares
+}
+
 const up = (row, column) => {
     let possibleSq = direction(row + 1, column)
     if(possibleSq) squares.push(possibleSq)
@@ -278,6 +320,7 @@ const left = (row, column) => {
     if(possibleSq) squares.push(possibleSq)
     return squares
 }
+
 const leftOver = (row, column) => {
     let possibleSq = direction(row + 1, column - 1)
     if(possibleSq) squares.push(possibleSq)
@@ -319,197 +362,6 @@ const allAround = (row, column) => {
     leftUnder(row, column)
 }
 
-const rightDiagonal = (idx) => {
-    for(let i = idx - 9; i >= 0; i -= 9){
-        if(!allSquares[i]) break
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-                break
-            // end of board
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-                break
-            //end of board
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
-    for(let i = idx + 9; i <= allSquares.length; i += 9){
-        if(!allSquares[i]) break
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-                break
-            // end of board
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-                break
-            //end of board
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
-    return squares
-}
-
-const leftDiagonal = (idx) => {
-    for(let i = idx - 7; i >= 0; i -= 7){
-        if(!allSquares[i]) break
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-                break
-            // end of board
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-                break
-            // end of board
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
-    for(let i = idx + 7; i <= allSquares.length; i += 7){
-        if(!allSquares[i]) break
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-                break
-            // end of board
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-                break
-            // end of board
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
-    return squares
-}
 const lDirection = (idx) => {
     console.log(idx)
     let i = -1
