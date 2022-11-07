@@ -280,6 +280,12 @@ const rightOver = (row, column) => {
     return squares
 }
 
+const rightUnder = (row, column) => {
+    let possibleSq = direction(row - 1, column + 1)
+    if(possibleSq) squares.push(possibleSq)
+    return squares
+}
+
 const rightDiagonal = (idx) => {
     for(let i = idx - 9; i >= 0; i -= 9){
         if(!allSquares[i]) break
