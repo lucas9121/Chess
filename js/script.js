@@ -262,53 +262,9 @@ const down = (row, column) => {
     return squares
 }
 
-const left = (idx) => {
-    for(let i = idx - 1; i >= 0; i--){
-        if(!allSquares[i]) break
-        //Player 1 turn
-        if(playerToggle){
-            // player 2 pieces
-            if(allSquares[i].children[0].classList.contains('player2')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 1 pieces
-            } else if(allSquares[i].children[0].classList.contains('player1')){
-                changeBackground(allSquares[i], 'red')
-                break
-            // end of board
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        // Player 2 turn
-        } else {
-            // player 1 pieces
-            if(allSquares[i].children[0].classList.contains('player1')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], 'green')
-                break
-            // player 2 pieces
-            } else if(allSquares[i].children[0].classList.contains('player2')){
-                changeBackground(allSquares[i], 'red')
-                break
-            // end of board
-            } else if(allSquares[i].classList.contains('A') || allSquares[i].classList.contains('H')){
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-                break
-            // no pieces
-            } else {
-                squares.push(allSquares[i])
-                changeBackground(allSquares[i], '#0010ff99')
-            }
-        }
-    }
+const left = (row, column) => {
+    let possibleSq = direction(row, column - 1)
+    if(possibleSq) squares.push(possibleSq)
     return squares
 }
 
