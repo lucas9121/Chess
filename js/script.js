@@ -677,6 +677,10 @@ const p1Turn = () => {
     p1Knight2.addEventListener('click', knightMovement)
     p1Rook1.addEventListener('click', rookMovement)
     p1Rook2.addEventListener('click', rookMovement)
+    playerOne.pawns.forEach((pawn) => {
+        console.log(pawn)
+        pawn.name.addEventListener('click', pawnMovement)
+    })
 
     // Remove Event Listeners
     p2King.removeEventListener('click', kingMovement)
@@ -687,6 +691,9 @@ const p1Turn = () => {
     p2Knight2.removeEventListener('click', knightMovement)
     p2Rook1.removeEventListener('click', rookMovement)
     p2Rook2.removeEventListener('click', rookMovement)
+    playerTwo.pawns.forEach((pawn) => {
+        pawn.name.removeEventListener('click', pawnMovement)
+    })
 }
 
 const p2Turn = () => {
@@ -700,6 +707,9 @@ const p2Turn = () => {
     p2Knight2.addEventListener('click', knightMovement)
     p2Rook1.addEventListener('click', rookMovement)
     p2Rook2.addEventListener('click', rookMovement)
+    playerTwo.pawns.forEach((pawn) => {
+        pawn.name.addEventListener('click', pawnMovement)
+    })
 
     // Remove Event Listeners
     p1King.removeEventListener('click', kingMovement)
@@ -710,6 +720,9 @@ const p2Turn = () => {
     p1Knight2.removeEventListener('click', knightMovement)
     p1Rook1.removeEventListener('click', rookMovement)
     p1Rook2.removeEventListener('click', rookMovement)
+    playerOne.pawns.forEach((pawn) => {
+        pawn.name.removeEventListener('click', pawnMovement)
+    })
 }
 
 p1Turn()
