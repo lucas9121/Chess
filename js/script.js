@@ -36,6 +36,7 @@ let squares = []
 //toggles
 let playerToggle = true
 let pieceToggle = ''
+let aPawn = false
 let kingToggle = false
 let queenToggle = false
 let bishop1Toggle = false
@@ -81,7 +82,7 @@ const playerTwo = {
 
 // adding Pawns
 p2Pawns.forEach((pawn) => {
-    playerOne.pawns.push({
+    playerTwo.pawns.push({
         name: pawn,
         moves: 0
     })
@@ -543,8 +544,8 @@ const knightMovement = (evt) => {
 }
 
 const rookMovement = (evt) => {
-    console.log('rook moevement function')
-    //removes all other backgrouns
+    console.log('rook movement function')
+    //removes all other backgrounds
     squares = []
     for(let square of allSquares){
         square.style.background = ''
@@ -568,6 +569,90 @@ const rookMovement = (evt) => {
     if(pieceToggle === evt.target){
         upDown(row, column)
         leftRight(row, column)
+        for(let square of squares){
+            square.addEventListener('click', clicked)
+        }
+    } else {
+        for(let square of squares){
+            square.removeEventListener('click', clicked)
+            square.style.background = ''
+        }
+    }
+    return squaresArray = [...allSquares]
+}
+
+const pawnMovement = (evt) => {
+    console.log('pawn movement function')
+    //removes all other backgrounds
+    squares = []
+    for(let square of allSquares){
+        square.style.background = ''
+    }
+
+    //global pieces
+    movingPiece = evt.target
+    oldSquare = squaresArray.find((square) => square.children[0] === movingPiece)
+
+    // Toggle
+    if(pieceToggle !== movingPiece){
+        pieceToggle = movingPiece
+        aPawn = true
+    } else {
+        pieceToggle = ''
+        aPawn = false
+    }
+
+    // row and column of piece and its equivalent in the arrays
+    let row = rows.indexOf(oldSquare.classList[2])
+    let column = columns.indexOf(oldSquare.classList[1])
+
+    // player pawn in array
+    let myPawn
+    let pawnIdx
+    if(playerToggle){
+        // console.log(playerOne.pawns)
+        myPawn = playerOne.pawns.find((piece) => piece.name === movingPiece)
+        pawnIdx = playerOne.pawns.indexOf(myPawn)
+    } else {
+        // console.log(playerTwo.pawns)
+        myPawn = playerTwo.pawns.find((piece) => piece.name === movingPiece)
+        pawnIdx = playerTwo.pawns.indexOf(myPawn)
+    }
+
+    if(pieceToggle === evt.target){
+        //Player 1 turn
+        if(playerToggle){
+            //pawn first move
+            if(playerOne.pawns[pawnIdx].moves === 0){
+                up(row, column)
+                up(row + 1, column)
+            //not first move
+            } else {
+                up(row, column)
+            }
+            // if pawn can eat another piece
+            let checkSquare1 = findSquare(row + 1, column + 1)
+            let checkSquare2 = findSquare(row + 1, column - 1)
+            if(checkSquare1 && checkSquare1.children[0].classList.contains('player2')) rightOver(row, column)
+            if(checkSquare2 && checkSquare2.children[0].classList.contains('player2')) leftOver(row, column)
+
+        //Player 2 turn
+        } else {
+            //pawn first move
+            if(playerTwo.pawns[pawnIdx].moves === 0){
+                down(row, column)
+                down(row - 1, column)
+            //not first move
+            } else {
+                down(row, column)
+            }
+            // if pawn can eat another piece
+            let checkSquare1 = findSquare(row - 1, column + 1)
+            let checkSquare2 = findSquare(row - 1, column - 1)
+            if(checkSquare1 && checkSquare1.children[0].classList.contains('player1')) rightUnder(row, column)
+            if(checkSquare2 && checkSquare2.children[0].classList.contains('player1')) leftUnder(row, column)
+        }
+
         for(let square of squares){
             square.addEventListener('click', clicked)
         }
