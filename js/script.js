@@ -443,26 +443,24 @@ const kingMovement = (evt) => {
         square.style.background = ''
     }
 
-    // Toggle 
-    queenToggle = false
-    bishop1Toggle = false
-    bishop2Toggle = false
-    knight1Toggle = false
-    knight2Toggle = false
-    rook1Toggle = false
-    rook2Toggle = false
-    kingToggle = !kingToggle
-
     // global variables
     movingPiece = evt.target
     let kingSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
     oldSquare = kingSquare[0]
 
+    // Toggle
+    aPawn = false
+    if(pieceToggle !== movingPiece){
+        pieceToggle = movingPiece
+    } else {
+        pieceToggle = ''
+    }
+
     // row and column of piece and its equivalent in the arrays
     let row = rows.indexOf(oldSquare.classList[2])
     let column = columns.indexOf(oldSquare.classList[1])
 
-    if(kingToggle){
+    if(pieceToggle === evt.target){
         // possible moves for piece
         allAround(row, column)
 
