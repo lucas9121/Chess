@@ -479,8 +479,7 @@ const bishopMovement = (evt) => {
     
     //global pieces
     movingPiece = evt.target
-    let bishopSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
-    oldSquare = bishopSquare[0]
+    oldSquare = squaresArray.find((square) => square.children[0] === movingPiece)
 
     // Toggle
     if(pieceToggle !== movingPiece){
