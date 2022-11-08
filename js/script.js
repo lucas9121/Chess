@@ -18,7 +18,6 @@ const p2Knight2 = document.getElementById('p2Knight2')
 const p1Pawns = document.querySelectorAll('.p1Pawn')
 const p2Pawns = document.querySelectorAll('.p2Pawn')
 
-
 /////// ROWS and COLUMNS///////
 const rows = ['1', '2', '3', '4', '5', '6', '7', '8']
 
@@ -103,10 +102,9 @@ function movePiece(clickedEl){
 
     //removes piece from original square
     oldSquare.removeChild(movingPiece)
-    oldSquare.classList.remove('occupied')
     
     //If there's an opponent's piece in the square
-    if(clickedEl.classList.contains('occupied')){
+    if(clickedEl.children.length > 1){
         let removePiece = clickedEl.children[0]
         removePiece.remove()
         //Player 1 turn and piece is opponent's king
@@ -123,9 +121,18 @@ function movePiece(clickedEl){
         }
     }
 
+    //if piece is a pawn
+    if(aPawn){
+        //find piece in player array and increase moves by 1
+        if(playerToggle){
+            playerOne.pawns.find((piece) => piece.name === movingPiece).moves++
+        } else {
+            playerTwo.pawns.find((piece) => piece.name === movingPiece).moves++
+        }
+    }
+
     //places it piece on clicked square
     clickedEl.prepend(movingPiece)
-    clickedEl.classList.add('occupied')
 
     //erase global variables
     movingPiece = null
@@ -133,14 +140,8 @@ function movePiece(clickedEl){
     squares = []
 
     //Reset toggles
-    kingToggle = false
-    queenToggle = false
-    bishop1Toggle = false
-    bishop2Toggle = false
-    knight1Toggle = false
-    knight2Toggle = false
-    rook1Toggle = false
-    rook2Toggle = false
+    pieceToggle = ''
+    aPawn = false
 
     // update array
     squaresArray = [...allSquares]
