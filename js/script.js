@@ -549,23 +549,25 @@ const rookMovement = (evt) => {
     for(let square of allSquares){
         square.style.background = ''
     }
-    kingToggle = false
-    queenToggle = false
-    bishop1Toggle = false
-    bishop2Toggle = false
-    knight1Toggle = false
-    knight2Toggle = false
+
+    //global pieces
     movingPiece = evt.target
-    if(movingPiece === p1Rook1 || movingPiece === p2Rook1) rook1Toggle = !rook1Toggle
-    if(movingPiece === p1Rook2 || movingPiece === p2Rook2) rook2Toggle = !rook2Toggle
-    let rookSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
-    oldSquare = rookSquare[0]
-    let idx = squaresArray.indexOf(oldSquare)
-    if(rook1Toggle || rook2Toggle){
-        up(idx)
-        down(idx)
-        left(idx)
-        right(idx)
+    oldSquare = squaresArray.find((square) => square.children[0] === movingPiece)
+
+    // Toggle
+    if(pieceToggle !== movingPiece){
+        pieceToggle = movingPiece
+    } else {
+        pieceToggle = ''
+    }
+
+    // row and column of piece and its equivalent in the arrays
+    let row = rows.indexOf(oldSquare.classList[2])
+    let column = columns.indexOf(oldSquare.classList[1])
+
+    if(pieceToggle === evt.target){
+        upDown(row, column)
+        leftRight(row, column)
         for(let square of squares){
             square.addEventListener('click', clicked)
         }
