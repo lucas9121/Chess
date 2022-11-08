@@ -476,21 +476,25 @@ const bishopMovement = (evt) => {
     for(let square of allSquares){
         square.style.background = ''
     }
-    kingToggle = false
-    queenToggle = false
-    knight1Toggle = false
-    knight2Toggle = false
-    rook1Toggle = false
-    rook2Toggle = false
+    
+    //global pieces
     movingPiece = evt.target
-    if(movingPiece === p1Bishop1 || movingPiece === p2Bishop1) bishop1Toggle = !bishop1Toggle
-    if(movingPiece === p1Bishop2 || movingPiece === p2Bishop2) bishop2Toggle = !bishop2Toggle
     let bishopSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
     oldSquare = bishopSquare[0]
-    let idx = squaresArray.indexOf(oldSquare)
-    if(bishop1Toggle || bishop2Toggle){
-        rightDiagonal(idx)
-        leftDiagonal(idx)
+
+    // Toggle
+    if(pieceToggle !== movingPiece){
+        pieceToggle = movingPiece
+    } else {
+        pieceToggle = ''
+    }
+
+    // row and column of piece and its equivalent in the arrays
+    let row = rows.indexOf(oldSquare.classList[2])
+    let column = columns.indexOf(oldSquare.classList[1])
+    
+    if(pieceToggle === evt.target){
+        diagonal(row, column)
         for(let square of squares){
             square.addEventListener('click', clicked)
         }
