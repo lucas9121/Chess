@@ -512,20 +512,24 @@ const knightMovement = (evt) => {
     for(let square of allSquares){
         square.style.background = ''
     }
-    kingToggle = false
-    queenToggle = false
-    bishop1Toggle = false
-    bishop2Toggle = false
-    rook1Toggle = false
-    rook2Toggle = false
+
+    //global pieces
     movingPiece = evt.target
-    if(movingPiece === p1Knight1 || movingPiece === p2Knight1) knight1Toggle = !knight1Toggle
-    if(movingPiece === p1Knight2 || movingPiece === p2Knight2) knight2Toggle = !knight2Toggle
-    let knightSqaure = squaresArray.filter((square) => square.children[0] === movingPiece)
-    oldSquare = knightSqaure[0]
-    let idx = squaresArray.indexOf(oldSquare)
-    if(knight1Toggle || knight2Toggle){
-        lDirection(idx)
+    oldSquare = squaresArray.find((square) => square.children[0] === movingPiece)
+
+    // Toggle
+    if(pieceToggle !== movingPiece){
+        pieceToggle = movingPiece
+    } else {
+        pieceToggle = ''
+    }
+
+    // row and column of piece and its equivalent in the arrays
+    let row = rows.indexOf(oldSquare.classList[2])
+    let column = columns.indexOf(oldSquare.classList[1])
+
+    if(pieceToggle === evt.target){
+        horse(row, column)
         for(let square of squares){
             square.addEventListener('click', clicked)
         }
