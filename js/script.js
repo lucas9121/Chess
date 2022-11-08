@@ -416,15 +416,21 @@ const pawnHalt = (r, c) => {
     let checkSq = findSquare(r, c)
     if(checkSq && checkSq.children.length > 1){
         changeBackground(checkSq, 'red')
-        return true
+        return false
     } 
-    return false
+    return true
 }
 
 const pawnUp = (r, c) => {
     let checkSq = pawnHalt(r + 1, c)
-    if(!checkSq) return up(r, c)
-    if(checkSq) return pawnHalt(r + 1, c)
+    if(checkSq) return up(r, c)
+    if(!checkSq) return pawnHalt(r + 1, c)
+}
+
+const pawnDown = (r, c) => {
+    let checkSq = pawnHalt(r - 1, c)
+    if(checkSq) return down(r, c)
+    if(!checkSq) return pawnHalt(r - 1, c)
 }
 
 /////////////////////////////////////////////////////////////////////////   PIECES MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -692,15 +698,15 @@ const pawnMovement = (evt) => {
 
         //Player 2 turn
         } else {
-            let checkSq1 = pawnHalt(row - 1, column)
-            let checkSq2 = pawnHalt(row - 2, column)
+            // let checkSq1 = pawnHalt(row - 1, column)
+            // let checkSq2 = pawnHalt(row - 2, column)
             //pawn first move
             if(playerTwo.pawns[pawnIdx].moves === 0){
-                if(!checkSq1) down(row, column)
-                if(!checkSq1 && !checkSq2) down(row - 1, column)
+                // if(!checkSq1) down(row, column)
+                // if(!checkSq1 && !checkSq2) down(row - 1, column)
             //not first move
             } else {
-                if(!checkSq1) down(row, column)
+                // if(!checkSq1) down(row, column)
             }
             // if pawn can eat another piece
             // let checkSquare1 = findSquare(row - 1, column + 1)
@@ -732,7 +738,7 @@ const p1Turn = () => {
     p1Rook1.addEventListener('click', rookMovement)
     p1Rook2.addEventListener('click', rookMovement)
     playerOne.pawns.forEach((pawn) => {
-        console.log(pawn)
+        // console.log(pawn)
         pawn.name.addEventListener('click', pawnMovement)
     })
 
