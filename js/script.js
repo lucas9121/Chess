@@ -385,6 +385,33 @@ const horse = (row, column) =>{
     return squares
 }
 
+const pawnAtck = (row, column) => {
+    if(playerToggle){
+        let checkSq1 = findSquare(row + 1, column + 1)
+        let checkSq2 = findSquare(row + 1, column - 1)
+        if(checkSq1 && checkSq1.children[0].classList.contains('player2')){
+            direction(row + 1, column + 1)
+            squares.push(checkSq1)
+        }
+        if(checkSq2 && checkSq2.children[0].classList.contains('player2')){
+            direction(row + 1, column - 1)
+            squares.push(checkSq2)
+        }
+
+    } else {
+        let checkSq1 = findSquare(row - 1, column + 1)
+        let checkSq2 = findSquare(row - 1, column - 1)
+        if(checkSq1 && checkSq1.children[0].classList.contains('player1')){
+            direction(row - 1, column + 1)
+            squares.push(checkSq1)
+        }
+        if(checkSq2 && checkSq2.children[0].classList.contains('player1')){
+            direction(row - 1, column - 1)
+            squares.push(checkSq2)
+        }
+    }
+}
+
 /////////////////////////////////////////////////////////////////////////   PIECES MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const kingMovement = (evt) => {
@@ -653,7 +680,6 @@ const pawnMovement = (evt) => {
             if(checkSquare1 && checkSquare1.children[0].classList.contains('player1')) rightUnder(row, column)
             if(checkSquare2 && checkSquare2.children[0].classList.contains('player1')) leftUnder(row, column)
         }
-
         for(let square of squares){
             square.addEventListener('click', clicked)
         }
