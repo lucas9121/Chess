@@ -36,14 +36,6 @@ let squares = []
 let playerToggle = true
 let pieceToggle = ''
 let aPawn = false
-let kingToggle = false
-let queenToggle = false
-let bishop1Toggle = false
-let bishop2Toggle = false
-let knight1Toggle = false
-let knight2Toggle = false
-let rook1Toggle = false
-let rook2Toggle = false
 
 /////////////////////////////////////// Players info ///////////////////////////////////////
 const playerOne = {
@@ -64,8 +56,6 @@ p1Pawns.forEach((pawn) => {
         moves: 0
     })
 })
-
-console.log(playerOne)
 
 const playerTwo = {
     name: 'Computer',
@@ -489,6 +479,7 @@ const queenMovement = (evt) => {
     oldSquare = squaresArray.find((square) => square.children[0] === movingPiece)
 
     // Toggle
+    aPawn = false
     if(pieceToggle !== movingPiece){
         pieceToggle = movingPiece
     } else {
@@ -529,6 +520,7 @@ const bishopMovement = (evt) => {
     oldSquare = squaresArray.find((square) => square.children[0] === movingPiece)
 
     // Toggle
+    aPawn = false
     if(pieceToggle !== movingPiece){
         pieceToggle = movingPiece
     } else {
@@ -566,6 +558,7 @@ const knightMovement = (evt) => {
     oldSquare = squaresArray.find((square) => square.children[0] === movingPiece)
 
     // Toggle
+    aPawn = false
     if(pieceToggle !== movingPiece){
         pieceToggle = movingPiece
     } else {
@@ -603,6 +596,7 @@ const rookMovement = (evt) => {
     oldSquare = squaresArray.find((square) => square.children[0] === movingPiece)
 
     // Toggle
+    aPawn = false
     if(pieceToggle !== movingPiece){
         pieceToggle = movingPiece
     } else {
