@@ -412,6 +412,15 @@ const pawnAtck = (row, column) => {
     }
 }
 
+const pawnHalt = (r, c) => {
+    let checkSq = findSquare(r, c)
+    if(checkSq && checkSq.children.length > 1){
+        changeBackground(checkSq, 'red')
+        return true
+    } 
+    return false
+}
+
 /////////////////////////////////////////////////////////////////////////   PIECES MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const kingMovement = (evt) => {
@@ -648,37 +657,50 @@ const pawnMovement = (evt) => {
     }
 
     if(pieceToggle === evt.target){
+        pawnAtck(row, column)
         //Player 1 turn
         if(playerToggle){
             //pawn first move
+            let checkSq1 = pawnHalt(row + 1, column)
+            let checkSq2 = pawnHalt(row + 2, column)
             if(playerOne.pawns[pawnIdx].moves === 0){
-                up(row, column)
-                up(row + 1, column)
+                console.log('no moves made')
+                if(!checkSq1) up(row, column), console.log('up')
+                if(!checkSq2 && !checkSq1) up(row + 1, column)
             //not first move
             } else {
-                up(row, column)
+                console.log('a move was made')
+                console.log(checkSq1)
+                if(!checkSq1) {
+                    up(row, column)
+                    console.log('up 2')
+                } else {
+                    pawnHalt(row + 1, column)
+                } 
             }
             // if pawn can eat another piece
-            let checkSquare1 = findSquare(row + 1, column + 1)
-            let checkSquare2 = findSquare(row + 1, column - 1)
-            if(checkSquare1 && checkSquare1.children[0].classList.contains('player2')) rightOver(row, column)
-            if(checkSquare2 && checkSquare2.children[0].classList.contains('player2')) leftOver(row, column)
+            // let checkSquare1 = findSquare(row + 1, column + 1)
+            // let checkSquare2 = findSquare(row + 1, column - 1)
+            // if(checkSquare1 && checkSquare1.children[0].classList.contains('player2')) rightOver(row, column)
+            // if(checkSquare2 && checkSquare2.children[0].classList.contains('player2')) leftOver(row, column)
 
         //Player 2 turn
         } else {
+            let checkSq1 = pawnHalt(row - 1, column)
+            let checkSq2 = pawnHalt(row - 2, column)
             //pawn first move
             if(playerTwo.pawns[pawnIdx].moves === 0){
-                down(row, column)
-                down(row - 1, column)
+                if(!checkSq1) down(row, column)
+                if(!checkSq1 && !checkSq2) down(row - 1, column)
             //not first move
             } else {
-                down(row, column)
+                if(!checkSq1) down(row, column)
             }
             // if pawn can eat another piece
-            let checkSquare1 = findSquare(row - 1, column + 1)
-            let checkSquare2 = findSquare(row - 1, column - 1)
-            if(checkSquare1 && checkSquare1.children[0].classList.contains('player1')) rightUnder(row, column)
-            if(checkSquare2 && checkSquare2.children[0].classList.contains('player1')) leftUnder(row, column)
+            // let checkSquare1 = findSquare(row - 1, column + 1)
+            // let checkSquare2 = findSquare(row - 1, column - 1)
+            // if(checkSquare1 && checkSquare1.children[0].classList.contains('player1')) rightUnder(row, column)
+            // if(checkSquare2 && checkSquare2.children[0].classList.contains('player1')) leftUnder(row, column)
         }
         for(let square of squares){
             square.addEventListener('click', clicked)
