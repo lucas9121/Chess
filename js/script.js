@@ -438,8 +438,7 @@ const queenMovement = (evt) => {
 
     // global pieces
     movingPiece = evt.target
-    let queenSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
-    oldSquare = queenSquare[0]
+    oldSquare = squaresArray.find((square) => square.children[0] === movingPiece)
 
     // Toggle
     if(pieceToggle !== movingPiece){
