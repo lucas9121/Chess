@@ -421,6 +421,12 @@ const pawnHalt = (r, c) => {
     return false
 }
 
+const pawnUp = (r, c) => {
+    let checkSq = pawnHalt(r + 1, c)
+    if(!checkSq) return up(r, c)
+    if(checkSq) return pawnHalt(r + 1, c)
+}
+
 /////////////////////////////////////////////////////////////////////////   PIECES MOVEMENT   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const kingMovement = (evt) => {
@@ -661,22 +667,22 @@ const pawnMovement = (evt) => {
         //Player 1 turn
         if(playerToggle){
             //pawn first move
-            let checkSq1 = pawnHalt(row + 1, column)
-            let checkSq2 = pawnHalt(row + 2, column)
+            // let checkSq1 = pawnHalt(row + 1, column)
+            // let checkSq2 = pawnHalt(row + 2, column)
             if(playerOne.pawns[pawnIdx].moves === 0){
                 console.log('no moves made')
-                if(!checkSq1) up(row, column), console.log('up')
-                if(!checkSq2 && !checkSq1) up(row + 1, column)
+                // if(!checkSq1) up(row, column), console.log('up')
+                // if(!checkSq2 && !checkSq1) up(row + 1, column)
             //not first move
             } else {
                 console.log('a move was made')
-                console.log(checkSq1)
-                if(!checkSq1) {
-                    up(row, column)
-                    console.log('up 2')
-                } else {
-                    pawnHalt(row + 1, column)
-                } 
+                // console.log(checkSq1)
+                // if(!checkSq1) {
+                //     up(row, column)
+                //     console.log('up 2')
+                // } else {
+                //     pawnHalt(row + 1, column)
+                // } 
             }
             // if pawn can eat another piece
             // let checkSquare1 = findSquare(row + 1, column + 1)
