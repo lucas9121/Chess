@@ -17,6 +17,7 @@ const p2Knight1 = document.getElementById('p2Knight1')
 const p2Knight2 = document.getElementById('p2Knight2')
 const p1Pawns = document.querySelectorAll('.p1Pawn')
 const p2Pawns = document.querySelectorAll('.p2Pawn')
+const victory = document.querySelector('p.playerVictory')
 
 /////// ROWS and COLUMNS///////
 const rows = ['1', '2', '3', '4', '5', '6', '7', '8']
@@ -100,12 +101,16 @@ function movePiece(clickedEl){
         //Player 1 turn and piece is opponent's king
         if(playerToggle && playerTwo.king === removePiece){
             clickedEl.prepend(movingPiece)
+            victory.innerHTML = `Game over! ${playerOne.name} won!`
+            victory.style.visibility = 'visible'
             console.log(`Game over! ${playerOne.name} won!`)
             return
         }
         //Player 2 turn and piece is opponent's king
         if(!playerToggle && playerOne.king === removePiece){
             clickedEl.prepend(movingPiece)
+            victory.innerHTML = `Game over! ${playerTwo.name} won!`
+            victory.style.visibility = 'visible'
             console.log(`Game over! ${playerTwo.name} won!`)
             return
         }
