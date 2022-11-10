@@ -18,6 +18,9 @@ const p2Knight2 = document.getElementById('p2Knight2')
 const p1Pawns = document.querySelectorAll('.p1Pawn')
 const p2Pawns = document.querySelectorAll('.p2Pawn')
 const victory = document.querySelector('p.playerVictory')
+const p1Info = document.querySelector('p.player1')
+const p2Info = document.querySelector('p.player2')
+
 
 /////// ROWS and COLUMNS///////
 const rows = ['1', '2', '3', '4', '5', '6', '7', '8']
@@ -84,6 +87,10 @@ for(let square of allSquares){
     small.innerHTML = `${square.id}`
     square.appendChild(small)
 }
+
+// add HTML names
+p1Info.innerHTML = `${playerOne.name} <img src="${playerOne.king.src}" style="height: 50px" alt="king">`
+p2Info.innerHTML = `${playerTwo.name} <img src="${playerTwo.king.src}" style="height: 50px" alt="king">`
 
 /////////////////////////////// Reusable Functions //////////////////////////////////////
 function movePiece(clickedEl){
