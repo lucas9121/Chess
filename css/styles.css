@@ -83,8 +83,12 @@ main{
 .info > p {
     margin: 0;
     color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .playerVictory {
     visibility: hidden;
+    width: 36vw;
 }
