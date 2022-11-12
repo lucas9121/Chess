@@ -446,8 +446,7 @@ const kingMovement = (evt) => {
 
     // global variables
     movingPiece = evt.target
-    let kingSquare = squaresArray.find((square) => square.children[0] === movingPiece)
-    oldSquare = kingSquare
+    oldSquare = squaresArray.find((square) => square.children[0] === movingPiece)
 
     // Toggle
     aPawn = false
