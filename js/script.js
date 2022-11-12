@@ -176,8 +176,7 @@ const changeBackground = (element, color) => {
 const findSquare = (r, c) => {
     let row = rows[r]
     let column = columns[c]
-    let square = squaresArray.find((square) => square.className === `square ${column} ${row}`)
-    return square
+    return squaresArray.find((square) => square.className === `square ${column} ${row}`)
 }
 
 const direction = (r, c) => { 
@@ -447,8 +446,8 @@ const kingMovement = (evt) => {
 
     // global variables
     movingPiece = evt.target
-    let kingSquare = squaresArray.filter((square) => square.children[0] === movingPiece)
-    oldSquare = kingSquare[0]
+    let kingSquare = squaresArray.find((square) => square.children[0] === movingPiece)
+    oldSquare = kingSquare
 
     // Toggle
     aPawn = false
