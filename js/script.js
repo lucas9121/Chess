@@ -176,8 +176,8 @@ const changeBackground = (element, color) => {
 const findSquare = (r, c) => {
     let row = rows[r]
     let column = columns[c]
-    let square = squaresArray.filter((square) => square.className === `square ${column} ${row}`)
-    return square[0]
+    let square = squaresArray.find((square) => square.className === `square ${column} ${row}`)
+    return square
 }
 
 const direction = (r, c) => { 
