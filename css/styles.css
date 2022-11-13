@@ -13,6 +13,7 @@ header{
     justify-content: center;
     background: #5a3300f2;
     background: linear-gradient(#4d2c00f2 90%, #5a3300f2);
+    background: linear-gradient(#2196f3f7 60%, #2196f38f);
     color: white;
     height: 80px;
     width: 100vw;
@@ -27,15 +28,32 @@ main{
     flex-direction: column;
     justify-content: space-evenly;
     background: linear-gradient(#5a3300f2, #D2AB6F);
+    background: linear-gradient(#2196f38f, #fffffff0);
+}
+
+.choices {
+    margin: 0 auto;
+    padding: 0;
+    width: 800px;
+    display: flex;
+    justify-content: space-around;
+    font-size: x-large;
+    color: white;
+    visibility: hidden;
+}
+
+.choices > li {
+    list-style-type: none;
+    cursor: pointer;
 }
 
 .board {
     display: grid;
     grid-template-columns: repeat(8, 100px);
     border: 5px solid;
-    border-image-slice: 1;
+    /* border-image-slice: 1;
     border-image-source: linear-gradient(to right, #e9cba2f2, #51340df2, #321c03);
-    width: fit-content;
+    width: fit-content; */
     margin: 0 auto;
 }
 
@@ -49,12 +67,14 @@ main{
     align-items: center;
     justify-content: end;
     background: #D2AB6F;
+    background: #a8a8a8;
 }
 
 .square:nth-child(16n+2), .square:nth-child(16n+4),
 .square:nth-child(16n+6), .square:nth-child(16n+8), .square:nth-child(16n+9),
 .square:nth-child(16n+11), .square:nth-child(16n+13), .square:nth-child(16n+15){
   background: #5a3300f2;
+  background: #565656;
   color: white;
 }
 
@@ -72,8 +92,8 @@ main{
 
 .info {
     height: 21vh;
-    border: solid;
     background: #808080b3;
+    background: linear-gradient(#e1effd 20%, #2196f3f7);
     font-size: 50px;
     display: flex;
     justify-content: space-around;
