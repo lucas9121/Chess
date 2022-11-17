@@ -127,11 +127,9 @@ function movePiece(clickedEl){
     //if piece is a pawn
     if(aPawn){
         //find piece in player array and increase moves by 1
-        if(playerToggle){
-            playerOne.pawns.find((piece) => piece.name === movingPiece).moves++
-        } else {
-            playerTwo.pawns.find((piece) => piece.name === movingPiece).moves++
-        }
+        let pawnPiece = findPawn(movingPiece)
+        pawnPiece.moves++
+        if(clickedEl.classList.contains('8') || clickedEl.classList.contains('1')) return pawnChoices()
     }
 
     //places it piece on clicked square
