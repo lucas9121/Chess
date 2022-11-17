@@ -129,7 +129,7 @@ function movePiece(clickedEl){
         //find piece in player array and increase moves by 1
         let pawnPiece = findPawn(movingPiece)
         pawnPiece.moves++
-        if(clickedEl.classList.contains('3') || clickedEl.classList.contains('1')) return pawnChoices(pawnPiece, clickedEl)
+        if(clickedEl.classList.contains('3') || clickedEl.classList.contains('1')) return pieceChange(pawnPiece, clickedEl)
     }
 
     //places it piece on clicked square
@@ -225,7 +225,19 @@ function findPawn(pawn){
     }
 }
 
+function pieceChange(pawn, square){
+    choicesDiv.style.visibility = 'visible'
+    console.log(choicesDiv.children[1].children)
+    let lis = choicesDiv.children[1].children
+    for(const [key, value] of Object.entries(lis)){
+        value.addEventListener('click', (evt) => {
+            return (pawnChoices(pawn, square, evt.target.innerHTML))
+        })
+    }
+}
+
 function pawnChoices(pawn, square, newChoice){
+    choicesDiv.style.visibility = ''
     let idx
     let removedPawn
     let newPiece
@@ -233,28 +245,28 @@ function pawnChoices(pawn, square, newChoice){
         idx = playerOne.pawns.indexOf(pawn)
         removedPawn = playerOne.pawns.splice(idx, 1)
         newPiece = removedPawn[0].name
-        if(newChoice === 'queen'){
+        if(newChoice === 'Queen'){
             newPiece.src = playerOne.queen[0].src
             newPiece.id = ''
             newPiece.alt = 'queen'
             newPiece.classList.remove('p1Pawn')
             playerOne.queen.push(newPiece)
         }
-        if(newChoice === 'bishops'){
+        if(newChoice === 'Bishop'){
             newPiece.src = playerOne.bishops[0].src
             newPiece.id = ''
             newPiece.alt = 'bishop'
             newPiece.classList.remove('p1Pawn')
             playerOne.bishops.push(newPiece)
         }
-        if(newChoice === 'knights'){
+        if(newChoice === 'Knight'){
             newPiece.src = playerOne.knights[0].src
             newPiece.id = ''
             newPiece.alt = 'knight'
             newPiece.classList.remove('p1Pawn')
             playerOne.knights.push(newPiece)
         }
-        if(newChoice === 'rooks') {
+        if(newChoice === 'Rook') {
             newPiece.src = playerOne.rooks[0].src
             newPiece.id = ''
             newPiece.alt = 'rook'
@@ -265,28 +277,28 @@ function pawnChoices(pawn, square, newChoice){
         idx = playerTwo.pawns.indexOf(pawn)
         removedPawn = playerTwo.pawns.splice(idx, 1)
         newPiece = removedPawn[0].name
-        if(newChoice === 'queen'){
+        if(newChoice === 'Queen'){
             newPiece.src = playerTwo.queen[0].src
             newPiece.id = ''
             newPiece.alt = 'queen'
             newPiece.classList.remove('p1Pawn')
             playerTwo.queen.push(newPiece)
         }
-        if(newChoice === 'bishops'){
+        if(newChoice === 'Bishop'){
             newPiece.src = playerTwo.bishops[0].src
             newPiece.id = ''
             newPiece.alt = 'bishop'
             newPiece.classList.remove('p1Pawn')
             playerTwo.bishops.push(newPiece)
         }
-        if(newChoice === 'knights'){
+        if(newChoice === 'Knight'){
             newPiece.src = playerTwo.knights[0].src
             newPiece.id = ''
             newPiece.alt = 'knight'
             newPiece.classList.remove('p1Pawn')
             playerTwo.knights.push(newPiece)
         }
-        if(newChoice === 'rooks') {
+        if(newChoice === 'Rook') {
             newPiece.src = playerTwo.rooks[0].src
             newPiece.id = ''
             newPiece.alt = 'rook'
