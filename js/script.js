@@ -20,6 +20,7 @@ const p2Pawns = document.querySelectorAll('.p2Pawn')
 const victory = document.querySelector('p.playerVictory')
 const p1Info = document.querySelector('p.player1')
 const p2Info = document.querySelector('p.player2')
+const choicesDiv = document.querySelector('.choices')
 
 
 /////// ROWS and COLUMNS///////
@@ -215,6 +216,14 @@ const direction = (r, c) => {
                 return newSquare
             }
         }
+    }
+}
+
+function findPawn(pawn){
+    if(playerToggle){
+        return playerOne.pawns.find((piece) => piece.name === pawn)
+    } else {
+        return playerTwo.pawns.find((piece) => piece.name === pawn)
     }
 }
 
