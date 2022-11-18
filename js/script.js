@@ -226,10 +226,9 @@ function findPawn(pawn){
 }
 
 function pieceChange(pawn, square){
-    console.log(pawn)
+    console.log('pieceChange function')
     pawn.name.removeEventListener('click', pawnMovement)
     choicesDiv.style.visibility = 'visible'
-    console.log(choicesDiv.children[1].children)
     let lis = choicesDiv.children[1].children
     for(const [key, value] of Object.entries(lis)){
         value.addEventListener('click', (evt) => {
@@ -239,6 +238,7 @@ function pieceChange(pawn, square){
 }
 
 function pawnChoices(pawn, square, newChoice){
+    console.log('pawnChoices function')
     choicesDiv.style.visibility = ''
     let idx
     let removedPawn
@@ -822,7 +822,6 @@ const pawnMovement = (evt) => {
 
 const p1Turn = () => {
     console.log('Player 1 move')
-    console.log(playerOne)
     //Add Event Listeners
     p1King.addEventListener('click', kingMovement)
     p1Queen.addEventListener('click', queenMovement)
@@ -833,7 +832,6 @@ const p1Turn = () => {
         knight.addEventListener('click', knightMovement)
     })
     playerOne.rooks.forEach((rook) => {
-        console.log(rook)
         rook.addEventListener('click', rookMovement)
     })
     playerOne.pawns.forEach((pawn) => {
