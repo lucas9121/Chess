@@ -226,6 +226,8 @@ function findPawn(pawn){
 }
 
 function pieceChange(pawn, square){
+    console.log(pawn)
+    pawn.name.removeEventListener('click', pawnMovement)
     choicesDiv.style.visibility = 'visible'
     console.log(choicesDiv.children[1].children)
     let lis = choicesDiv.children[1].children
@@ -820,15 +822,20 @@ const pawnMovement = (evt) => {
 
 const p1Turn = () => {
     console.log('Player 1 move')
+    console.log(playerOne)
     //Add Event Listeners
     p1King.addEventListener('click', kingMovement)
     p1Queen.addEventListener('click', queenMovement)
-    p1Bishop1.addEventListener('click', bishopMovement)
-    p1Bishop2.addEventListener('click', bishopMovement)
-    p1Knight1.addEventListener('click', knightMovement)
-    p1Knight2.addEventListener('click', knightMovement)
-    p1Rook1.addEventListener('click', rookMovement)
-    p1Rook2.addEventListener('click', rookMovement)
+    playerOne.bishops.forEach((bishop) => {
+        bishop.addEventListener('click', bishopMovement)
+    })
+    playerOne.knights.forEach((knight) => {
+        knight.addEventListener('click', knightMovement)
+    })
+    playerOne.rooks.forEach((rook) => {
+        console.log(rook)
+        rook.addEventListener('click', rookMovement)
+    })
     playerOne.pawns.forEach((pawn) => {
         pawn.name.addEventListener('click', pawnMovement)
     })
@@ -836,12 +843,15 @@ const p1Turn = () => {
     // Remove Event Listeners
     p2King.removeEventListener('click', kingMovement)
     p2Queen.removeEventListener('click', queenMovement)
-    p2Bishop1.removeEventListener('click', bishopMovement)
-    p2Bishop2.removeEventListener('click', bishopMovement)
-    p2Knight1.removeEventListener('click', knightMovement)
-    p2Knight2.removeEventListener('click', knightMovement)
-    p2Rook1.removeEventListener('click', rookMovement)
-    p2Rook2.removeEventListener('click', rookMovement)
+    playerTwo.bishops.forEach((bishop) => {
+        bishop.removeEventListener('click', bishopMovement)
+    })
+    playerTwo.knights.forEach((knight) => {
+        knight.removeEventListener('click', knightMovement)
+    })
+    playerTwo.rooks.forEach((rook) => {
+        rook.removeEventListener('click', rookMovement)
+    })
     playerTwo.pawns.forEach((pawn) => {
         pawn.name.removeEventListener('click', pawnMovement)
     })
@@ -852,12 +862,15 @@ const p2Turn = () => {
     //Add Event Listeners
     p2King.addEventListener('click', kingMovement)
     p2Queen.addEventListener('click', queenMovement)
-    p2Bishop1.addEventListener('click', bishopMovement)
-    p2Bishop2.addEventListener('click', bishopMovement)
-    p2Knight1.addEventListener('click', knightMovement)
-    p2Knight2.addEventListener('click', knightMovement)
-    p2Rook1.addEventListener('click', rookMovement)
-    p2Rook2.addEventListener('click', rookMovement)
+    playerTwo.bishops.forEach((bishop) => {
+        bishop.addEventListener('click', bishopMovement)
+    })
+    playerTwo.knights.forEach((knight) => {
+        knight.addEventListener('click', knightMovement)
+    })
+    playerTwo.rooks.forEach((rook) => {
+        rook.addEventListener('click', rookMovement)
+    })
     playerTwo.pawns.forEach((pawn) => {
         pawn.name.addEventListener('click', pawnMovement)
     })
@@ -865,12 +878,15 @@ const p2Turn = () => {
     // Remove Event Listeners
     p1King.removeEventListener('click', kingMovement)
     p1Queen.removeEventListener('click', queenMovement)
-    p1Bishop1.removeEventListener('click', bishopMovement)
-    p1Bishop2.removeEventListener('click', bishopMovement)
-    p1Knight1.removeEventListener('click', knightMovement)
-    p1Knight2.removeEventListener('click', knightMovement)
-    p1Rook1.removeEventListener('click', rookMovement)
-    p1Rook2.removeEventListener('click', rookMovement)
+    playerOne.bishops.forEach((bishop) => {
+        bishop.removeEventListener('click', bishopMovement)
+    })
+    playerOne.knights.forEach((knight) => {
+        knight.removeEventListener('click', knightMovement)
+    })
+    playerOne.rooks.forEach((rook) => {
+        rook.removeEventListener('click', rookMovement)
+    })
     playerOne.pawns.forEach((pawn) => {
         pawn.name.removeEventListener('click', pawnMovement)
     })
