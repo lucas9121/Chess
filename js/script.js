@@ -98,7 +98,7 @@ p2Info.innerHTML = `${playerTwo.name} <img src="${playerTwo.king.src}" style="he
 function movePiece(evt){
     console.log('Move Piece function')
     let clickedEl = evt.target
-    //if cliced on opponent piece instead of square
+    //if clicked on opponent piece instead of square
     if(clickedEl.nodeName === 'IMG') clickedEl = clickedEl.parentElement
 
     //adding global variable
@@ -111,22 +111,12 @@ function movePiece(evt){
     if(clickedEl.children.length > 1){
         let removePiece = clickedEl.children[0]
         removePiece.remove()
+
         //Player 1 turn and piece is opponent's king
-        if(playerToggle && playerTwo.king === removePiece){
-            clickedEl.prepend(movingPiece)
-            victory.innerHTML = `Checkmate! ${playerOne.name} won!`
-            victory.style.visibility = 'visible'
-            console.log(`Checkmate! ${playerOne.name} won!`)
-            return
-        }
+        if(playerToggle && playerTwo.king === removePiece) return checkMate(playerOne.name)
+
         //Player 2 turn and piece is opponent's king
-        if(!playerToggle && playerOne.king === removePiece){
-            clickedEl.prepend(movingPiece)
-            victory.innerHTML = `Checkmate! ${playerTwo.name} won!`
-            victory.style.visibility = 'visible'
-            console.log(`Checkmate! ${playerTwo.name} won!`)
-            return
-        }
+        if(!playerToggle && playerOne.king === removePiece) return checkMate(playerTwo.name)
     }
 
     //if piece is a pawn
@@ -142,6 +132,7 @@ function movePiece(evt){
     //places it piece on clicked square
     clickedEl.prepend(movingPiece)
 
+
     //erase global variables
     movingPiece = null
     oldSquare = null
@@ -152,7 +143,6 @@ function movePiece(evt){
     pieceToggle = ''
     aPawn = false
 
-    // removes background and event listeners
     removeBackground()
 
     // update array
@@ -167,6 +157,48 @@ function movePiece(evt){
     }
 }
 
+function checkMate(name){
+    newSquare.prepend(movingPiece)
+    console.log(`Checkmate! ${name} won!`)
+    victory.style.visibility = 'visible'
+    victory.innerHTML = `Checkmate! ${name} won!`
+
+    // Remove Event Listeners
+    if(playerToggle) p1King.removeEventListener('click', kingMovement)
+    p1Queen.queen.forEach((queen) => {
+        queen.removeEventListener('click', queenMovement)
+    })
+    playerOne.bishops.forEach((bishop) => {
+        bishop.removeEventListener('click', bishopMovement)
+    })
+    playerOne.knights.forEach((knight) => {
+        knight.removeEventListener('click', knightMovement)
+    })
+    playerOne.rooks.forEach((rook) => {
+        rook.removeEventListener('click', rookMovement)
+    })
+    playerOne.pawns.forEach((pawn) => {
+        pawn.name.removeEventListener('click', pawnMovement)
+    })
+    if(!playerToggle) p2King.removeEventListener('click', kingMovement)
+    p2Queen.queen.forEach((queen) => {
+        queen.removeEventListener('click', queenMovement)
+    })
+    playerTwo.bishops.forEach((bishop) => {
+        bishop.removeEventListener('click', bishopMovement)
+    })
+    playerTwo.knights.forEach((knight) => {
+        knight.removeEventListener('click', knightMovement)
+    })
+    playerTwo.rooks.forEach((rook) => {
+        rook.removeEventListener('click', rookMovement)
+    })
+    playerTwo.pawns.forEach((pawn) => {
+        pawn.name.removeEventListener('click', pawnMovement)
+    })
+}
+
+// removes background color and event listeners
 const removeBackground = () => {
     for(let box of allSquares){
         box.style.background = ''
@@ -691,6 +723,8 @@ const knightMovement = (evt) => {
     } else {
         pieceToggle = ''
     }
+
+    console.log(pieceToggle)
 
     // row and column of piece and its equivalent in the arrays
     let row = rows.indexOf(oldSquare.classList[2])
