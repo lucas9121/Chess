@@ -69,7 +69,7 @@ const playerTwo = {
     queen: p2Queen,
     knights: [p2Knight1, p2Knight2],
     rooks: [p2Rook1, p2Rook2],
-    bishops: [p2Bishop1, p2Bishop1],
+    bishops: [p2Bishop1, p2Bishop2],
     pawns: []
     
 }
@@ -170,16 +170,11 @@ function movePiece(evt){
     }
 }
 
-const clicked = (evt) => {
-    console.log('Clicked funciton')
-    let square = evt.target
-
+const removeBackground = () => {
     // removes background and event listeners
     for(let box of allSquares){
-        box.removeEventListener('click', clicked)
         box.style.background = ''
     }
-    return movePiece(square)
 }
 
 const changeBackground = (element, color) => {
