@@ -122,7 +122,7 @@ function movePiece(evt){
     //if piece is a pawn
     if(aPawn){
         //if pawn made it to the end of the board
-        if(clickedEl.classList.contains('3') || clickedEl.classList.contains('1')) return pieceChange(pawnPiece, clickedEl)
+        if(clickedEl.classList.contains('8') || clickedEl.classList.contains('1')) return pieceChange()
 
         //find piece in player array and increase moves by 1
         let pawnPiece = findPawn(movingPiece)
@@ -266,28 +266,32 @@ function findPawn(pawn){
     }
 }
 
-// const clickedChoice = (evt) => {
-//     console.log(evt.target)
-//     console.log(newSquare)
-// }
 
-
-function pieceChange(pawn, square){
+function pieceChange(){
     console.log('pieceChange function')
+    let pawn = findPawn(movingPiece)
     pawn.name.removeEventListener('click', pawnMovement)
+    // newChoice = evt.target.innerHTML
     choicesDiv.style.visibility = 'visible'
     let lis = choicesDiv.children[1].children
     for(const [key, value] of Object.entries(lis)){
+        console.log(value)
         // value.addEventListener('click', (evt) => {
         //     return (pawnChoices(pawn, square, evt.target.innerHTML))
         // })
-        value.addEventListener('click', clickedChoice)
+        value.addEventListener('click', pawnChoices)
     }
 }
 
-function pawnChoices(pawn, square, newChoice){
+function pawnChoices(evt){
     console.log('pawnChoices function')
+    let newChoice = evt.target.innerHTML
     choicesDiv.style.visibility = ''
+    let lis = choicesDiv.children[1].children
+    for(const [key, value] of Object.entries(lis)){
+        value.removeEventListener('click', pawnChoices)
+    }
+    let pawn = findPawn(movingPiece)
     let idx
     let removedPawn
     let newPiece
@@ -356,7 +360,8 @@ function pawnChoices(pawn, square, newChoice){
             playerTwo.rooks.push(newPiece)
         }
     }
-    square.prepend(newPiece)
+    removeBackground()
+    newSquare.prepend(newPiece)
 
     //erase global variables
     movingPiece = null
