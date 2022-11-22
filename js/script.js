@@ -154,7 +154,7 @@ function movePiece(evt){
 
     // removes background and event listeners
     for(let box of allSquares){
-        box.removeEventListener('click', clicked)
+        box.removeEventListener('click', movePiece)
         box.style.background = ''
     }
 
@@ -599,11 +599,11 @@ const kingMovement = (evt) => {
         allAround(row, column)
 
         for(let square of squares){
-            square.addEventListener('click', clicked)
+            square.addEventListener('click', movePiece)
         }
     } else{
         for(let square of squares){
-            square.removeEventListener('click', clicked)
+            square.removeEventListener('click', movePiece)
             square.style.background = ''
         }
     }
@@ -639,11 +639,11 @@ const queenMovement = (evt) => {
         leftRight(row, column)
         diagonal(row, column)
         for(let square of squares){
-            square.addEventListener('click', clicked)
+            square.addEventListener('click', movePiece)
         }
     } else {
         for(let square of squares){
-            square.removeEventListener('click', clicked)
+            square.removeEventListener('click', movePiece)
             square.style.background = ''
         }
     }
@@ -678,11 +678,11 @@ const bishopMovement = (evt) => {
     if(pieceToggle === evt.target){
         diagonal(row, column)
         for(let square of squares){
-            square.addEventListener('click', clicked)
+            square.addEventListener('click', movePiece)
         }
     } else {
         for(let square of squares){
-            square.removeEventListener('click', clicked)
+            square.removeEventListener('click', movePiece)
             square.style.background = ''
         }
     }
@@ -716,11 +716,11 @@ const knightMovement = (evt) => {
     if(pieceToggle === evt.target){
         horse(row, column)
         for(let square of squares){
-            square.addEventListener('click', clicked)
+            square.addEventListener('click', movePiece)
         }
     } else {
         for(let square of squares){
-            square.removeEventListener('click', clicked)
+            square.removeEventListener('click', movePiece)
             square.style.background = ''
         }
     }
@@ -755,11 +755,11 @@ const rookMovement = (evt) => {
         upDown(row, column)
         leftRight(row, column)
         for(let square of squares){
-            square.addEventListener('click', clicked)
+            square.addEventListener('click', movePiece)
         }
     } else {
         for(let square of squares){
-            square.removeEventListener('click', clicked)
+            square.removeEventListener('click', movePiece)
             square.style.background = ''
         }
     }
@@ -830,11 +830,11 @@ const pawnMovement = (evt) => {
             }
         }
         for(let square of squares){
-            square.addEventListener('click', clicked)
+            square.addEventListener('click', movePiece)
         }
     } else {
         for(let square of squares){
-            square.removeEventListener('click', clicked)
+            square.removeEventListener('click', movePiece)
             square.style.background = ''
         }
     }
