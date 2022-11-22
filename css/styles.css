@@ -102,6 +102,10 @@ main{
     cursor: pointer;
 }
 
+.checkmate > .square > img {
+    cursor: auto;
+} 
+
 .info {
     height: 21vh;
     background: #808080b3;
