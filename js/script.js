@@ -47,7 +47,7 @@ let aPawn = false
 const playerOne = {
     name: 'Me',
     king: p1King,
-    queen: p1Queen,
+    queen: [p1Queen],
     knights: [p1Knight1, p1Knight2],
     rooks: [p1Rook1, p1Rook2],
     bishops: [p1Bishop1, p1Bishop2],
@@ -66,7 +66,7 @@ p1Pawns.forEach((pawn) => {
 const playerTwo = {
     name: 'Computer',
     king: p2King,
-    queen: p2Queen,
+    queen: [p2Queen],
     knights: [p2Knight1, p2Knight2],
     rooks: [p2Rook1, p2Rook2],
     bishops: [p2Bishop1, p2Bishop2],
@@ -162,10 +162,13 @@ function checkMate(name){
     console.log(`Checkmate! ${name} won!`)
     victory.style.visibility = 'visible'
     victory.innerHTML = `Checkmate! ${name} won!`
-
+    const board = document.querySelector('.board')
+    board.classList.add('checkmate')
+    
     // Remove Event Listeners
+    removeBackground()
     if(playerToggle) p1King.removeEventListener('click', kingMovement)
-    p1Queen.queen.forEach((queen) => {
+    playerOne.queen.forEach((queen) => {
         queen.removeEventListener('click', queenMovement)
     })
     playerOne.bishops.forEach((bishop) => {
@@ -181,7 +184,7 @@ function checkMate(name){
         pawn.name.removeEventListener('click', pawnMovement)
     })
     if(!playerToggle) p2King.removeEventListener('click', kingMovement)
-    p2Queen.queen.forEach((queen) => {
+    playerTwo.queen.forEach((queen) => {
         queen.removeEventListener('click', queenMovement)
     })
     playerTwo.bishops.forEach((bishop) => {
@@ -201,6 +204,7 @@ function checkMate(name){
 // removes background color and event listeners
 const removeBackground = () => {
     for(let box of allSquares){
+        box.removeEventListener('click', movePiece)
         box.style.background = ''
     }
 }
@@ -858,7 +862,9 @@ const p1Turn = () => {
     console.log('Player 1 move')
     //Add Event Listeners
     p1King.addEventListener('click', kingMovement)
-    p1Queen.addEventListener('click', queenMovement)
+    playerOne.queen.forEach((queen) => {
+        queen.addEventListener('click', queenMovement)
+    })
     playerOne.bishops.forEach((bishop) => {
         bishop.addEventListener('click', bishopMovement)
     })
@@ -874,7 +880,9 @@ const p1Turn = () => {
 
     // Remove Event Listeners
     p2King.removeEventListener('click', kingMovement)
-    p2Queen.removeEventListener('click', queenMovement)
+    playerTwo.queen.forEach((queen) => {
+        queen.removeEventListener('click', queenMovement)
+    })
     playerTwo.bishops.forEach((bishop) => {
         bishop.removeEventListener('click', bishopMovement)
     })
@@ -893,7 +901,9 @@ const p2Turn = () => {
     console.log('Player 2 move')
     //Add Event Listeners
     p2King.addEventListener('click', kingMovement)
-    p2Queen.addEventListener('click', queenMovement)
+    playerTwo.queen.forEach((queen) => {
+        queen.addEventListener('click', queenMovement)
+    })
     playerTwo.bishops.forEach((bishop) => {
         bishop.addEventListener('click', bishopMovement)
     })
@@ -909,7 +919,9 @@ const p2Turn = () => {
 
     // Remove Event Listeners
     p1King.removeEventListener('click', kingMovement)
-    p1Queen.removeEventListener('click', queenMovement)
+    playerOne.queen.forEach((queen) => {
+        queen.removeEventListener('click', queenMovement)
+    })
     playerOne.bishops.forEach((bishop) => {
         bishop.removeEventListener('click', bishopMovement)
     })
