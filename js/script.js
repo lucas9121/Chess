@@ -153,10 +153,7 @@ function movePiece(evt){
     aPawn = false
 
     // removes background and event listeners
-    for(let box of allSquares){
-        box.removeEventListener('click', movePiece)
-        box.style.background = ''
-    }
+    removeBackground()
 
     // update array
     squaresArray = [...allSquares]
@@ -171,7 +168,6 @@ function movePiece(evt){
 }
 
 const removeBackground = () => {
-    // removes background and event listeners
     for(let box of allSquares){
         box.style.background = ''
     }
@@ -569,9 +565,7 @@ const kingMovement = (evt) => {
     console.log('King Movement function')
     ///removes all other movement backgrounds
     squares = []
-    for(let square of allSquares){
-        square.style.background = ''
-    }
+    removeBackground()
 
     // global variables
     movingPiece = evt.target
@@ -609,9 +603,7 @@ const queenMovement = (evt) => {
     console.log('queen movement function')
     //removes all other movement backgrounds
     squares = []
-    for(let square of allSquares){
-        square.style.background = ''
-    }
+    removeBackground()
 
     // global pieces
     movingPiece = evt.target
@@ -650,9 +642,7 @@ const bishopMovement = (evt) => {
     console.log('bishop movement function')
     //removes all other movement backgrounds
     squares = []
-    for(let square of allSquares){
-        square.style.background = ''
-    }
+    removeBackground()
     
     //global pieces
     movingPiece = evt.target
@@ -688,9 +678,7 @@ const knightMovement = (evt) => {
     console.log('knight movement function')
     //removes all other movement backgrounds
     squares = []
-    for(let square of allSquares){
-        square.style.background = ''
-    }
+    removeBackground()
 
     //global pieces
     movingPiece = evt.target
@@ -726,9 +714,7 @@ const rookMovement = (evt) => {
     console.log('rook movement function')
     //removes all other backgrounds
     squares = []
-    for(let square of allSquares){
-        square.style.background = ''
-    }
+    removeBackground()
 
     //global pieces
     movingPiece = evt.target
@@ -765,9 +751,7 @@ const pawnMovement = (evt) => {
     console.log('pawn movement function')
     //removes all other backgrounds
     squares = []
-    for(let square of allSquares){
-        square.style.background = ''
-    }
+    removeBackground()
 
     //global pieces
     movingPiece = evt.target
