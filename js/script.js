@@ -132,29 +132,13 @@ function movePiece(evt){
     //places it piece on clicked square
     clickedEl.prepend(movingPiece)
 
-
-    //erase global variables
-    movingPiece = null
-    oldSquare = null
-    newSquare = null
-    squares = []
-
-    //Reset toggles
-    pieceToggle = ''
-    aPawn = false
-
+    resetVar()
     removeBackground()
 
     // update array
     squaresArray = [...allSquares]
 
-    if(playerToggle){
-        playerToggle = !playerToggle
-        return p2Turn()
-    } else {
-        playerToggle = !playerToggle
-        return p1Turn()
-    }
+    return newTurn()
 }
 
 function checkMate(name){
@@ -379,26 +363,12 @@ function pawnChoices(evt){
     }
     removeBackground()
     newSquare.prepend(newPiece)
-
-    //erase global variables
-    movingPiece = null
-    oldSquare = null
-    squares = []
-
-    //Reset toggles
-    pieceToggle = ''
-    aPawn = false
+    resetVar()
 
     // update array
     squaresArray = [...allSquares]
 
-    if(playerToggle){
-        playerToggle = !playerToggle
-        return p2Turn()
-    } else {
-        playerToggle = !playerToggle
-        return p1Turn()
-    }
+    return newTurn()
 }
 
 /////////////////////////////////////////////////////////////////////////   DIRECTIONS   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
