@@ -201,6 +201,28 @@ function checkMate(name){
     })
 }
 
+function resetVar(){
+    //erase global variables
+    movingPiece = null
+    oldSquare = null
+    newSquare = null
+    squares = []
+
+    //Reset toggles
+    pieceToggle = ''
+    aPawn = false
+}
+
+function newTurn() {
+    if(playerToggle){
+        playerToggle = !playerToggle
+        return p2Turn()
+    } else {
+        playerToggle = !playerToggle
+        return p1Turn()
+    }
+}
+
 // removes background color and event listeners
 const removeBackground = () => {
     for(let box of allSquares){
@@ -271,14 +293,9 @@ function pieceChange(){
     console.log('pieceChange function')
     let pawn = findPawn(movingPiece)
     pawn.name.removeEventListener('click', pawnMovement)
-    // newChoice = evt.target.innerHTML
     choicesDiv.style.visibility = 'visible'
     let lis = choicesDiv.children[1].children
     for(const [key, value] of Object.entries(lis)){
-        console.log(value)
-        // value.addEventListener('click', (evt) => {
-        //     return (pawnChoices(pawn, square, evt.target.innerHTML))
-        // })
         value.addEventListener('click', pawnChoices)
     }
 }
