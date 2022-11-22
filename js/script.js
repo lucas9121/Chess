@@ -28,12 +28,13 @@ const rows = ['1', '2', '3', '4', '5', '6', '7', '8']
 
 const columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 
-// array funcitons availability
+// array functions availability
 let squaresArray = [...allSquares]
 
 //global variables
 let movingPiece 
 let oldSquare
+let newSquare
 let squares = []
 
 
@@ -94,10 +95,14 @@ p1Info.innerHTML = `${playerOne.name} <img src="${playerOne.king.src}" style="he
 p2Info.innerHTML = `${playerTwo.name} <img src="${playerTwo.king.src}" style="height: 50px" alt="king">`
 
 /////////////////////////////// Reusable Functions //////////////////////////////////////
-function movePiece(clickedEl){
+function movePiece(evt){
     console.log('Move Piece function')
+    let clickedEl = evt.target
     //if cliced on opponent piece instead of square
     if(clickedEl.nodeName === 'IMG') clickedEl = clickedEl.parentElement
+
+    //adding global variable
+    newSquare = clickedEl
 
     //removes piece from original square
     oldSquare.removeChild(movingPiece)
@@ -109,27 +114,29 @@ function movePiece(clickedEl){
         //Player 1 turn and piece is opponent's king
         if(playerToggle && playerTwo.king === removePiece){
             clickedEl.prepend(movingPiece)
-            victory.innerHTML = `Game over! ${playerOne.name} won!`
+            victory.innerHTML = `Checkmate! ${playerOne.name} won!`
             victory.style.visibility = 'visible'
-            console.log(`Game over! ${playerOne.name} won!`)
+            console.log(`Checkmate! ${playerOne.name} won!`)
             return
         }
         //Player 2 turn and piece is opponent's king
         if(!playerToggle && playerOne.king === removePiece){
             clickedEl.prepend(movingPiece)
-            victory.innerHTML = `Game over! ${playerTwo.name} won!`
+            victory.innerHTML = `Checkmate! ${playerTwo.name} won!`
             victory.style.visibility = 'visible'
-            console.log(`Game over! ${playerTwo.name} won!`)
+            console.log(`Checkmate! ${playerTwo.name} won!`)
             return
         }
     }
 
     //if piece is a pawn
     if(aPawn){
+        //if pawn made it to the end of the board
+        if(clickedEl.classList.contains('3') || clickedEl.classList.contains('1')) return pieceChange(pawnPiece, clickedEl)
+
         //find piece in player array and increase moves by 1
         let pawnPiece = findPawn(movingPiece)
         pawnPiece.moves++
-        if(clickedEl.classList.contains('3') || clickedEl.classList.contains('1')) return pieceChange(pawnPiece, clickedEl)
     }
 
     //places it piece on clicked square
@@ -138,11 +145,18 @@ function movePiece(clickedEl){
     //erase global variables
     movingPiece = null
     oldSquare = null
+    newSquare = null
     squares = []
 
     //Reset toggles
     pieceToggle = ''
     aPawn = false
+
+    // removes background and event listeners
+    for(let box of allSquares){
+        box.removeEventListener('click', clicked)
+        box.style.background = ''
+    }
 
     // update array
     squaresArray = [...allSquares]
@@ -225,15 +239,22 @@ function findPawn(pawn){
     }
 }
 
+// const clickedChoice = (evt) => {
+//     console.log(evt.target)
+//     console.log(newSquare)
+// }
+
+
 function pieceChange(pawn, square){
     console.log('pieceChange function')
     pawn.name.removeEventListener('click', pawnMovement)
     choicesDiv.style.visibility = 'visible'
     let lis = choicesDiv.children[1].children
     for(const [key, value] of Object.entries(lis)){
-        value.addEventListener('click', (evt) => {
-            return (pawnChoices(pawn, square, evt.target.innerHTML))
-        })
+        // value.addEventListener('click', (evt) => {
+        //     return (pawnChoices(pawn, square, evt.target.innerHTML))
+        // })
+        value.addEventListener('click', clickedChoice)
     }
 }
 
