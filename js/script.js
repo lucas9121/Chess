@@ -1,3 +1,7 @@
+const menuPg = document.querySelector('.menu')
+const gamePg = document.querySelector('.gameSP')
+const buttonSP = document.querySelector('.singlePlayer')
+const nameInput = document.querySelector('#playerName')
 const allSquares = document.querySelectorAll('.square')
 const p1King = document.querySelector('#p1King')
 const p2King = document.querySelector('#p2King')
@@ -89,10 +93,6 @@ for(let square of allSquares){
     small.innerHTML = `${square.id}`
     square.appendChild(small)
 }
-
-// add HTML names
-p1Info.innerHTML = `${playerOne.name} <img src="${playerOne.king.src}" style="height: 50px" alt="king">`
-p2Info.innerHTML = `${playerTwo.name} <img src="${playerTwo.king.src}" style="height: 50px" alt="king">`
 
 /////////////////////////////// Reusable Functions //////////////////////////////////////
 function movePiece(evt){
@@ -928,4 +928,14 @@ const p2Turn = () => {
     })
 }
 
-p1Turn()
+/////////////////////////////////////////////////////////////////////////   PAGE CHANGE   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+buttonSP.addEventListener('click', () => {
+    menuPg.style.display = 'none'
+    gamePg.style.display = 'flex'
+    if(nameInput.value) playerOne.name = nameInput.value
+    // add HTML names
+    p1Info.innerHTML = `${playerOne.name} <img src="${playerOne.king.src}" style="height: 50px" alt="king">`
+    p2Info.innerHTML = `${playerTwo.name} <img src="${playerTwo.king.src}" style="height: 50px" alt="king">`
+    p1Turn()
+})
