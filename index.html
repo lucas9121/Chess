@@ -11,149 +11,159 @@
 <body>
     <header>Chess Game</header>
     <main>
-        <div class="choices">
-            <h3>Choose New Piece</h3>
-            <ul>
-                <li>Queen</li>
-                <li>Rook</li>
-                <li>Bishop</li>
-                <li>Knight</li>
-            </ul>
-        </div>
-        <div class="board">
-            <div class="square A 8" id="A8">
-                <img src="./images/Rook (Blk).png" class="player2" id="p2Rook1" alt="rook">
-            </div>
-            <div class="square B 8" id="B8">
-                <img src="./images/Knight (Blk).png" class="player2" id="p2Knight1" alt="knight">
-            </div>
-            <div class="square C 8" id="C8">
-                <img src="./images/Bishop (Blk).png" class="player2" id="p2Bishop1" alt="bishop">
-            </div>
-            <div class="square D 8" id="D8">
-                <img src="./images/King (blk).png" class="player2" id="p2King" alt="king">
-            </div>
-            <div class="square E 8" id="E8">
-                <img src="./images/Queen (Blk).png" class="player2" id="p2Queen" alt="queen">
-            </div>
-            <div class="square F 8" id="F8">
-                <img src="./images/Bishop (Blk).png" class="player2" id="p2Bishop2" alt="bishop">
-            </div>
-            <div class="square G 8" id="G8">
-                <img src="./images/Knight (Blk).png" class="player2" id="p2Knight2" alt="knight">
-            </div>
-            <div class="square H 8" id="H8">
-                <img src="./images/Rook (Blk).png" class="player2" id="p2Rook2" alt="rook">
-            </div>
-            <div class="square A 7" id="A7">
-                <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn1" alt="pawn">
-            </div>
-            <div class="square B 7" id="B7">
-                <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn2" alt="pawn">
-            </div>
-            <div class="square C 7" id="C7">
-                <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn3" alt="pawn">
-            </div>
-            <div class="square D 7" id="D7">
-                <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn4" alt="pawn">
-            </div>
-            <div class="square E 7" id="E7">
-                <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn5" alt="pawn">
-            </div>
-            <div class="square F 7" id="F7">
-                <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn6" alt="pawn">
-            </div>
-            <div class="square G 7" id="G7">
-                <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn7" alt="pawn">
-            </div>
-            <div class="square H 7" id="H7">
-                <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn8" alt="pawn">
-            </div>
-            <div class="square A 6" id="A6"></div>
-            <div class="square B 6" id="B6"></div>
-            <div class="square C 6" id="C6"></div>
-            <div class="square D 6" id="D6"></div>
-            <div class="square E 6" id="E6"></div>
-            <div class="square F 6" id="F6"></div>
-            <div class="square G 6" id="G6"></div>
-            <div class="square H 6" id="H6"></div>
-            <div class="square A 5" id="A5"></div>
-            <div class="square B 5" id="B5"></div>
-            <div class="square C 5" id="C5"></div>
-            <div class="square D 5" id="D5"></div>
-            <div class="square E 5" id="E5"></div>
-            <div class="square F 5" id="F5"></div>
-            <div class="square G 5" id="G5"></div>
-            <div class="square H 5" id="H5"></div>
-            <div class="square A 4" id="A4"></div>
-            <div class="square B 4" id="B4"></div>
-            <div class="square C 4" id="C4"></div>
-            <div class="square D 4" id="D4"></div>
-            <div class="square E 4" id="E4"></div>
-            <div class="square F 4" id="F4"></div>
-            <div class="square G 4" id="G4"></div>
-            <div class="square H 4" id="H4"></div>
-            <div class="square A 3" id="A3"></div>
-            <div class="square B 3" id="B3"></div>
-            <div class="square C 3" id="C3"></div>
-            <div class="square D 3" id="D3"></div>
-            <div class="square E 3" id="E3"></div>
-            <div class="square F 3" id="F3"></div>
-            <div class="square G 3" id="G3"></div>
-            <div class="square H 3" id="H3"></div>
-            <div class="square A 2" id="A2">
-                <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn1" alt="pawn">
-            </div>
-            <div class="square B 2" id="B2">
-                <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn2" alt="pawn">
-            </div>
-            <div class="square C 2" id="C2">
-                <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn3" alt="pawn">
-            </div>
-            <div class="square D 2" id="D2">
-                <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn4" alt="pawn">
-            </div>
-            <div class="square E 2" id="E2">
-                <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn5" alt="pawn">
-            </div>
-            <div class="square F 2" id="F2">
-                <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn6" alt="pawn">
-            </div>
-            <div class="square G 2" id="G2">
-                <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn7" alt="pawn">
-            </div>
-            <div class="square H 2" id="H2">
-                <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn8" alt="pawn">
-            </div>
-            <div class="square A 1" id="A1">
-                <img src="./images/Rook (Wht).png" class="player1" id="p1Rook1" alt="Rook">
-            </div>
-            <div class="square B 1" id="B1">
-                <img src="./images/Knight (Wht).png" class="player1" id="p1Knight1" alt="">
-            </div>
-            <div class="square C 1" id="C1">
-                <img src="./images/Bishop (Wht).png" class="player1" id="p1Bishop1" alt="bishop">
-            </div>
-            <div class="square D 1" id="D1">
-                <img src="./images/Queen (Wht).png" class="player1" id="p1Queen" alt="queen">
-            </div>
-            <div class="square E 1" id="E1">
-                <img src="./images/King (Wht).png" class="player1" id="p1King" alt="king">
-            </div>
-            <div class="square F 1" id="F1">
-                <img src="./images/Bishop (Wht).png" class="player1" id="p1Bishop2" alt="bishop">
-            </div>
-            <div class="square G 1" id="G1">
-                <img src="./images/Knight (Wht).png" class="player1" id="p1Knight2" alt="">
-            </div>
-            <div class="square H 1" id="H1">
-                <img src="./images/Rook (Wht).png" class="player1" id="p1Rook2" alt="Rook">
+        <div class="menu">
+            <div class="buttons">
+                <input type="text" name="" id="playerName" placeholder="Name" maxlength="8">
+                <button class="menuBtn singlePlayer">One Player</button>
+                <button class="menuBtn">Two Players</button>
+                <button class="menuBtn">Settings</button>
             </div>
         </div>
-        <div class="info">
-            <p class="player1"></p>
-            <p class="playerVictory"></p>
-            <p class="player2"></p>
+        <div class="gameSP">
+            <div class="choices">
+                <h3>Choose New Piece</h3>
+                <ul>
+                    <li>Queen</li>
+                    <li>Rook</li>
+                    <li>Bishop</li>
+                    <li>Knight</li>
+                </ul>
+            </div>
+            <div class="board">
+                <div class="square A 8" id="A8">
+                    <img src="./images/Rook (Blk).png" class="player2" id="p2Rook1" alt="rook">
+                </div>
+                <div class="square B 8" id="B8">
+                    <img src="./images/Knight (Blk).png" class="player2" id="p2Knight1" alt="knight">
+                </div>
+                <div class="square C 8" id="C8">
+                    <img src="./images/Bishop (Blk).png" class="player2" id="p2Bishop1" alt="bishop">
+                </div>
+                <div class="square D 8" id="D8">
+                    <img src="./images/King (blk).png" class="player2" id="p2King" alt="king">
+                </div>
+                <div class="square E 8" id="E8">
+                    <img src="./images/Queen (Blk).png" class="player2" id="p2Queen" alt="queen">
+                </div>
+                <div class="square F 8" id="F8">
+                    <img src="./images/Bishop (Blk).png" class="player2" id="p2Bishop2" alt="bishop">
+                </div>
+                <div class="square G 8" id="G8">
+                    <img src="./images/Knight (Blk).png" class="player2" id="p2Knight2" alt="knight">
+                </div>
+                <div class="square H 8" id="H8">
+                    <img src="./images/Rook (Blk).png" class="player2" id="p2Rook2" alt="rook">
+                </div>
+                <div class="square A 7" id="A7">
+                    <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn1" alt="pawn">
+                </div>
+                <div class="square B 7" id="B7">
+                    <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn2" alt="pawn">
+                </div>
+                <div class="square C 7" id="C7">
+                    <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn3" alt="pawn">
+                </div>
+                <div class="square D 7" id="D7">
+                    <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn4" alt="pawn">
+                </div>
+                <div class="square E 7" id="E7">
+                    <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn5" alt="pawn">
+                </div>
+                <div class="square F 7" id="F7">
+                    <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn6" alt="pawn">
+                </div>
+                <div class="square G 7" id="G7">
+                    <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn7" alt="pawn">
+                </div>
+                <div class="square H 7" id="H7">
+                    <img src="./images/Pawn (Blk).png" class="player2 p2Pawn" id="p2Pawn8" alt="pawn">
+                </div>
+                <div class="square A 6" id="A6"></div>
+                <div class="square B 6" id="B6"></div>
+                <div class="square C 6" id="C6"></div>
+                <div class="square D 6" id="D6"></div>
+                <div class="square E 6" id="E6"></div>
+                <div class="square F 6" id="F6"></div>
+                <div class="square G 6" id="G6"></div>
+                <div class="square H 6" id="H6"></div>
+                <div class="square A 5" id="A5"></div>
+                <div class="square B 5" id="B5"></div>
+                <div class="square C 5" id="C5"></div>
+                <div class="square D 5" id="D5"></div>
+                <div class="square E 5" id="E5"></div>
+                <div class="square F 5" id="F5"></div>
+                <div class="square G 5" id="G5"></div>
+                <div class="square H 5" id="H5"></div>
+                <div class="square A 4" id="A4"></div>
+                <div class="square B 4" id="B4"></div>
+                <div class="square C 4" id="C4"></div>
+                <div class="square D 4" id="D4"></div>
+                <div class="square E 4" id="E4"></div>
+                <div class="square F 4" id="F4"></div>
+                <div class="square G 4" id="G4"></div>
+                <div class="square H 4" id="H4"></div>
+                <div class="square A 3" id="A3"></div>
+                <div class="square B 3" id="B3"></div>
+                <div class="square C 3" id="C3"></div>
+                <div class="square D 3" id="D3"></div>
+                <div class="square E 3" id="E3"></div>
+                <div class="square F 3" id="F3"></div>
+                <div class="square G 3" id="G3"></div>
+                <div class="square H 3" id="H3"></div>
+                <div class="square A 2" id="A2">
+                    <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn1" alt="pawn">
+                </div>
+                <div class="square B 2" id="B2">
+                    <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn2" alt="pawn">
+                </div>
+                <div class="square C 2" id="C2">
+                    <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn3" alt="pawn">
+                </div>
+                <div class="square D 2" id="D2">
+                    <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn4" alt="pawn">
+                </div>
+                <div class="square E 2" id="E2">
+                    <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn5" alt="pawn">
+                </div>
+                <div class="square F 2" id="F2">
+                    <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn6" alt="pawn">
+                </div>
+                <div class="square G 2" id="G2">
+                    <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn7" alt="pawn">
+                </div>
+                <div class="square H 2" id="H2">
+                    <img src="./images/Pawn (Wht).png" class="player1 p1Pawn" id="p1Pawn8" alt="pawn">
+                </div>
+                <div class="square A 1" id="A1">
+                    <img src="./images/Rook (Wht).png" class="player1" id="p1Rook1" alt="Rook">
+                </div>
+                <div class="square B 1" id="B1">
+                    <img src="./images/Knight (Wht).png" class="player1" id="p1Knight1" alt="">
+                </div>
+                <div class="square C 1" id="C1">
+                    <img src="./images/Bishop (Wht).png" class="player1" id="p1Bishop1" alt="bishop">
+                </div>
+                <div class="square D 1" id="D1">
+                    <img src="./images/Queen (Wht).png" class="player1" id="p1Queen" alt="queen">
+                </div>
+                <div class="square E 1" id="E1">
+                    <img src="./images/King (Wht).png" class="player1" id="p1King" alt="king">
+                </div>
+                <div class="square F 1" id="F1">
+                    <img src="./images/Bishop (Wht).png" class="player1" id="p1Bishop2" alt="bishop">
+                </div>
+                <div class="square G 1" id="G1">
+                    <img src="./images/Knight (Wht).png" class="player1" id="p1Knight2" alt="">
+                </div>
+                <div class="square H 1" id="H1">
+                    <img src="./images/Rook (Wht).png" class="player1" id="p1Rook2" alt="Rook">
+                </div>
+            </div>
+            <div class="info">
+                <p class="player1"></p>
+                <p class="playerVictory"></p>
+                <p class="player2"></p>
+            </div>
         </div>
     </main>
 </body>
