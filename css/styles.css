@@ -24,11 +24,64 @@ main{
     height: calc(100vh - 40px);
     width: 100vw;
     /* padding: 50px 0; */
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-evenly; */
     background: linear-gradient(#5a3300f2, #D2AB6F);
     background: linear-gradient(#2196f38f, #fffffff0);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.menu > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 30%;
+    width: 30%;
+}
+
+.menuBtn {
+    padding: 10px;
+    color: #f3f8ff;
+    background: #2c99f3;
+    border-radius: 50px;
+    font-size: x-large;
+    font-weight: 700;
+    border: hidden;
+    width: 171px;
+    cursor: pointer;
+}
+
+#playerName {
+    padding: 10px;
+    border-radius: 50px;
+    font-size: x-large;
+    border: hidden;
+    text-align: center;
+    width: 200px;
+}
+
+#playerName::placeholder {
+    color: #3d3a3a96;
+}
+
+.menuBtn:hover {
+    background: #298bdc;
+}
+
+.gameSP {
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .choices {
